@@ -14,7 +14,7 @@ public class Servico {
     private Areas areaServico;
     private int notaParaMarido;
     private int notaParaDomestico;
-    private int foneDomestico;
+    private String foneDomestico;
     private TipoServico tipoServico;
 
     public Servico() {
@@ -85,11 +85,11 @@ public class Servico {
         this.notaParaDomestico = notaParaDomestico;
     }
 
-    public int getFoneDomestico() {
+    public String getFoneDomestico() {
         return foneDomestico;
     }
 
-    public void setFoneDomestico(int foneDomestico) {
+    public void setFoneDomestico(String foneDomestico) {
         this.foneDomestico = foneDomestico;
     }
 

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.imls.maridoaluguel.Banco.BancoDados;
 import com.imls.maridoaluguel.Business.Visualizacao;
@@ -26,14 +27,18 @@ public class TelaInicial extends AppCompatActivity {
         //Pegando email de quem está logado
         Usuario usr = GerenciaInstanciaLogin.getInstance().getUsuario();
 
-        Visualizacao view;
+        final Visualizacao view;
 
         view = bd.buscaLogado();
 
-        Button btnChamaTelaPerfil = findViewById(R.id.btnChamaTelaPerfil);
+        final Button btnChamaTelaPerfil = findViewById(R.id.btnChamaTelaPerfil);
         Button btnChamaTelaCadastroServico = findViewById(R.id.btnChamaTelaCadastroServico);
         Button btnChamaTelaVisualizaServico = findViewById(R.id.btnChamaTelaVisualizaServico);
-        Button btnDeslogar = findViewById(R.id.btnDeslogar);
+        final Button btnDeslogar = findViewById(R.id.btnDeslogar);
+        ImageButton btnMenu = findViewById(R.id.btnMenu);
+
+        btnChamaTelaPerfil.setVisibility(View.GONE);
+        btnDeslogar.setVisibility(View.GONE);
 
         if(view.getTipo().equals("DOMÉSTICO")) {
             btnChamaTelaCadastroServico.setVisibility(View.VISIBLE);
@@ -75,6 +80,20 @@ public class TelaInicial extends AppCompatActivity {
             public void onClick(View v) {
                 Intent telaVisualizaServico = new Intent(TelaInicial.this, TelaVisualizaServicos.class);
                 startActivity(telaVisualizaServico);
+            }
+        });
+
+        btnMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(btnDeslogar.getVisibility() == View.VISIBLE) {
+                    btnChamaTelaPerfil.setVisibility(View.GONE);
+                    btnDeslogar.setVisibility(View.GONE);
+                }
+                else {
+                    btnChamaTelaPerfil.setVisibility(View.VISIBLE);
+                    btnDeslogar.setVisibility(View.VISIBLE);
+                }
             }
         });
     }

@@ -205,7 +205,7 @@ public class BancoDados extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(tabela_usuario, new String[]{col_codigo, col_nome, col_email, col_cidade, col_estado,
-                col_fone, col_dataNasc, col_tipoUser, col_ativo},
+                col_fone, col_dataNasc, col_senha, col_tipoUser, col_ativo},
                 col_email + " = ?", new String[]{String.valueOf(email)},
                 null, null, null, null);
 
@@ -218,8 +218,9 @@ public class BancoDados extends SQLiteOpenHelper {
             user.setEstado(cursor.getString(4));
             user.setFone(cursor.getString(5));
             user.setDataNasc(cursor.getString(6));
-            user.setTipoUser(TipoUsuario.valueOf(cursor.getString(7)));
-            user.setAtivo(StatusUsuario.valueOf(cursor.getString(8)));
+            user.setSenha(cursor.getString(7));
+            user.setTipoUser(TipoUsuario.valueOf(cursor.getString(8)));
+            user.setAtivo(StatusUsuario.valueOf(cursor.getString(9)));
 
 
 

@@ -750,6 +750,7 @@ public class TelaEditPerfil extends AppCompatActivity {
                                                         else {
                                                             user.setTipoUser(TipoUsuario.MARIDO_ALUGUEL);
                                                         }
+                                                        user.setSenha(userCompleto.getUser().getSenha());
                                                         user.setAtivo(StatusUsuario.ATIVO);
 
                                                         Boolean bol = bd.atualizaUsuario(userCompleto.getUser().getId(), user);

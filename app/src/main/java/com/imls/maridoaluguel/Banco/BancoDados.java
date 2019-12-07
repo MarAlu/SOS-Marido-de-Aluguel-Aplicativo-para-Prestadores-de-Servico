@@ -9,7 +9,9 @@ import android.hardware.Camera;
 
 import com.imls.maridoaluguel.Business.Visualizacao;
 import com.imls.maridoaluguel.Enum.Areas;
+import com.imls.maridoaluguel.Enum.StatusServico;
 import com.imls.maridoaluguel.Enum.StatusUsuario;
+import com.imls.maridoaluguel.Enum.TipoServico;
 import com.imls.maridoaluguel.Enum.TipoUsuario;
 import com.imls.maridoaluguel.Form.Servico;
 import com.imls.maridoaluguel.Form.Usuario;
@@ -638,8 +640,8 @@ public class BancoDados extends SQLiteOpenHelper {
             values.put(col_codigo_dom, servico.getIdDomestico());
             values.put(col_codigo_mar, servico.getIdMarido());
             values.put(col_descricao_serv, servico.getDescServico());
-            values.put(col_avaliacao_serv_dom, "0,0");
-            values.put(col_avaliacao_serv_mar, "0,0");
+            values.put(col_avaliacao_serv_dom, 0);
+            values.put(col_avaliacao_serv_mar, 0);
             values.put(col_fone_domestico, servico.getFoneDomestico());
             values.put(col_area, servico.getAreaServico().name());
             values.put(col_tipo_servico, servico.getTipoServico().name());
@@ -689,8 +691,8 @@ public class BancoDados extends SQLiteOpenHelper {
             values.put(col_codigo_dom, servico.getIdDomestico());
             values.put(col_codigo_mar, servico.getIdMarido());
             values.put(col_descricao_serv, servico.getDescServico());
-            values.put(col_avaliacao_serv_dom, "0,0");
-            values.put(col_avaliacao_serv_mar, "0,0");
+            values.put(col_avaliacao_serv_dom, 0);
+            values.put(col_avaliacao_serv_mar, 0);
             values.put(col_fone_domestico, servico.getFoneDomestico());
             values.put(col_area, servico.getAreaServico().name());
 
@@ -706,6 +708,39 @@ public class BancoDados extends SQLiteOpenHelper {
         db.close();
         return false;
     }
+
+    //LISTAR TODOS OS SERVIÇOS CADASTRADOS
+    public ArrayList<Servico> listaTodosServicos() throws ParseException {
+
+        ArrayList<Servico> listaServicos = new ArrayList<Servico>();
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "select * from " + tabela_servico;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Servico serv = new Servico();
+
+                serv.setIdServico(Integer.parseInt(cursor.getString(0)));
+                serv.setStatusServico(StatusServico.valueOf(cursor.getString(1)));
+                serv.setIdDomestico(Integer.parseInt(cursor.getString(2)));
+                serv.setIdMarido(Integer.parseInt(cursor.getString(3)));
+                serv.setDescServico(cursor.getString(4));
+                serv.setNotaParaDomestico(Integer.parseInt(cursor.getString(5)));
+                serv.setNotaParaMarido(Integer.parseInt(cursor.getString(6)));
+                serv.setFoneDomestico(cursor.getString(7));
+                serv.setAreaServico(Areas.valueOf(cursor.getString(8)));
+                serv.setTipoServico(TipoServico.valueOf(cursor.getString(9)));
+
+                listaServicos.add(serv);
+            }
+            while (cursor.moveToNext());
+        }
+        return listaServicos;
+    }
+
 
 
 

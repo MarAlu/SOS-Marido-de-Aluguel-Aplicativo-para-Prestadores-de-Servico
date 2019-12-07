@@ -18,8 +18,6 @@ public class TelaInicial extends AppCompatActivity {
 
     BancoDados bd = new BancoDados(this);
 
-    private static final String PREFS_NAME = "";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +32,7 @@ public class TelaInicial extends AppCompatActivity {
 
         Button btnChamaTelaPerfil = findViewById(R.id.btnChamaTelaPerfil);
         Button btnChamaTelaCadastroServico = findViewById(R.id.btnChamaTelaCadastroServico);
+        Button btnChamaTelaVisualizaServico = findViewById(R.id.btnChamaTelaVisualizaServico);
         Button btnDeslogar = findViewById(R.id.btnDeslogar);
 
         if(view.getTipo().equals("DOMÉSTICO")) {
@@ -70,31 +69,13 @@ public class TelaInicial extends AppCompatActivity {
                 startActivity(telaMain);
             }
         });
+
+        btnChamaTelaVisualizaServico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent telaVisualizaServico = new Intent(TelaInicial.this, TelaVisualizaServicos.class);
+                startActivity(telaVisualizaServico);
+            }
+        });
     }
-/*
-    private void buscaUsuario() throws ParseException{
-
-        AlertDialog.Builder msgU = new AlertDialog.Builder(TelaInicial.this);
-        msgU.setNeutralButton("OK", null);
-
-        ArrayList<Usuario> user = bd.listaTodosUsuarios();
-
-        int qtd = user.size();
-
-        for(int i=0; i<=(qtd-1); i++) {
-
-            msgU.setTitle("Usuário "+ (i+1));
-            msgU.setMessage("Id: " +user.get(i).getId()+ "\n" +
-                    "Nome: " +user.get(i).getNome()+ "\n" +
-                    "E-mail: " +user.get(i).getEmail()+ "\n" +
-                    "Senha: " +user.get(i).getSenha()+ "\n" +
-                    "Fone: " +user.get(i).getFone()+ "\n" +
-                    "Data: " +user.get(i).getDataNasc()+ "\n" +
-                    "Tipo: " +user.get(i).getTipoUser()+ "\n" +
-                    "Ativo: " +user.get(i).getAtivo()+ "\n" +
-                    "Cidade: " +user.get(i).getCidade()+ "\n" +
-                    "Estado: " +user.get(i).getEstado()+ "\n");
-            msgU.show();
-        }
-    }*/
 }

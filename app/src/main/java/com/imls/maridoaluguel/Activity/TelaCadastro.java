@@ -38,24 +38,24 @@ public class TelaCadastro extends AppCompatActivity {
         final AlertDialog.Builder ms = new AlertDialog.Builder(TelaCadastro.this);
 
         //Botão Cadastrar
-        final Button btnCadastrar = findViewById(R.id.btnCriarServico);
-        final Button btnCadastrar2 = findViewById(R.id.btnCadastrar2);
+        final Button btnCadastrar = findViewById(R.id.btnCadastrarTCU);
+        final Button btnCadastrar2 = findViewById(R.id.btnCadastrar2TCU);
 
         //Check Tipos User
-        final CheckBox checkDomestico = findViewById(R.id.checkUsuarioDom);
-        final CheckBox checkMarido = findViewById(R.id.checkMaridoDeAluguel);
+        final CheckBox checkDomestico = findViewById(R.id.checkUsuarioDomTCU);
+        final CheckBox checkMarido = findViewById(R.id.checkMaridoDeAluguelTCU);
 
         //Check Áreas
-        final CheckBox checkEletrica = findViewById(R.id.checkEletricaS);
-        final CheckBox checkEncanamento = findViewById(R.id.checkEncanamentoS);
-        final CheckBox checkPintura = findViewById(R.id.checkPinturaS);
-        final CheckBox checkAlvenaria = findViewById(R.id.checkAlvenariaS);
-        final CheckBox checkMarcenaria = findViewById(R.id.checkMarcenariaS);
-        final CheckBox checkOutros = findViewById(R.id.checkOutrosS);
+        final CheckBox checkEletrica = findViewById(R.id.checkEletricaTCU);
+        final CheckBox checkEncanamento = findViewById(R.id.checkEncanamentoTCU);
+        final CheckBox checkPintura = findViewById(R.id.checkPinturaTCU);
+        final CheckBox checkAlvenaria = findViewById(R.id.checkAlvenariaTCU);
+        final CheckBox checkMarcenaria = findViewById(R.id.checkMarcenariaTCU);
+        final CheckBox checkOutros = findViewById(R.id.checkOutrosTCU);
 
-        final TextView msgInfo = findViewById(R.id.textvInfoCadS);
+        final TextView msgInfo = findViewById(R.id.textvInfoCadTCU);
 
-        final EditText descricaoAtivi = findViewById(R.id.textDescAtividadesS);
+        final EditText descricaoAtivi = findViewById(R.id.textDescAtividadesTCU);
 
         //Torna campo descrição rolável
         descricaoAtivi.setVerticalScrollBarEnabled(true);
@@ -88,14 +88,14 @@ public class TelaCadastro extends AppCompatActivity {
         btnCadastrar2.setVisibility(View.GONE);
 
         //Campos text
-        final EditText nome = findViewById(R.id.viewNomeS);
-        final EditText email = findViewById(R.id.textEmail);
-        final EditText cidade = findViewById(R.id.viewCidadeS);
-        final EditText estado = findViewById(R.id.textEstado);
-        final EditText dataNasc = findViewById(R.id.textDataNasc);
-        final EditText foneContato = findViewById(R.id.viewFoneS);
-        final EditText senha = findViewById(R.id.textSenha);
-        final EditText confSenha = findViewById(R.id.textConfSenha);
+        final EditText nome = findViewById(R.id.textNomeTCU);
+        final EditText email = findViewById(R.id.textEmailTCU);
+        final EditText cidade = findViewById(R.id.textCidadeTCU);
+        final EditText estado = findViewById(R.id.textEstadoTCU);
+        final EditText dataNasc = findViewById(R.id.textDataNascTCU);
+        final EditText foneContato = findViewById(R.id.textFoneTCU);
+        final EditText senha = findViewById(R.id.textSenhaTCU);
+        final EditText confSenha = findViewById(R.id.textConfSenhaTCU);
 
         //Mensagem do check Marido/Domestico
         final AlertDialog.Builder msgCheck = new AlertDialog.Builder(TelaCadastro.this);
@@ -172,8 +172,8 @@ public class TelaCadastro extends AppCompatActivity {
                         if(!email.getText().toString().trim().equals("")){
                             if(!cidade.getText().toString().trim().equals("")){
                                 if(!estado.getText().toString().trim().equals("")){
-                                    if(!dataNasc.getText().toString().trim().equals("")){
-                                        if(!foneContato.getText().toString().trim().equals("")){
+                                    if(!dataNasc.getText().toString().trim().equals("") && dataNasc.getText().length() == 10){
+                                        if(!foneContato.getText().toString().trim().equals("") && foneContato.getText().length() == 14){
                                             if(!senha.getText().toString().trim().equals("")){
                                                 if(!confSenha.getText().toString().trim().equals("")){
                                                     if(senha.getText().toString().equals(confSenha.getText().toString())) {
@@ -214,8 +214,8 @@ public class TelaCadastro extends AppCompatActivity {
                                                                         msgCad.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                                                             public void onClick(DialogInterface arg0, int arg1) {
                                                                                 bd.close();
-                                                                                Intent telaLoguin = new Intent(TelaCadastro.this, TelaLogin.class);
-                                                                                startActivity(telaLoguin);
+                                                                                Intent telaLogin = new Intent(TelaCadastro.this, TelaLogin.class);
+                                                                                startActivity(telaLogin);
                                                                             }
                                                                         });
                                                                         msgCad.show();
@@ -272,8 +272,8 @@ public class TelaCadastro extends AppCompatActivity {
                                                             msgCad.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                                                                 public void onClick(DialogInterface arg0, int arg1) {
                                                                     bd.close();
-                                                                    Intent telaLoguin = new Intent(TelaCadastro.this, TelaLogin.class);
-                                                                    startActivity(telaLoguin);
+                                                                    Intent telaLogin = new Intent(TelaCadastro.this, TelaLogin.class);
+                                                                    startActivity(telaLogin);
                                                                 }
                                                             });
                                                             msgCad.setNegativeButton("Não", new DialogInterface.OnClickListener() {
@@ -355,8 +355,8 @@ public class TelaCadastro extends AppCompatActivity {
                         if(!email.getText().toString().trim().equals("")){
                             if(!cidade.getText().toString().trim().equals("")){
                                 if(!estado.getText().toString().trim().equals("")){
-                                    if(!dataNasc.getText().toString().trim().equals("")){
-                                        if(!foneContato.getText().toString().trim().equals("")){
+                                    if(!dataNasc.getText().toString().trim().equals("") && dataNasc.getText().length() == 10){
+                                        if(!foneContato.getText().toString().trim().equals("") && foneContato.getText().length() == 14){
                                             if(!senha.getText().toString().trim().equals("")){
                                                 if(!confSenha.getText().toString().trim().equals("")){
                                                     if(checkEletrica.isChecked() || checkEncanamento.isChecked() || checkAlvenaria.isChecked() || checkMarcenaria.isChecked() || checkPintura.isChecked() || checkOutros.isChecked()) {
@@ -396,6 +396,7 @@ public class TelaCadastro extends AppCompatActivity {
 
                                                                         idUser = bd.pesquisaPorEmail(email.getText().toString());
 
+                                                                        System.out.println(idUser);
                                                                         if(idUser != 0) {
                                                                             //Caso seja Marido e Domestico
                                                                             if(user.getTipoUser().name().equals("DOMESTICO_E_MARIDO")) {
@@ -428,8 +429,8 @@ public class TelaCadastro extends AppCompatActivity {
                                                                                         msgCad.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                                                                             public void onClick(DialogInterface arg0, int arg1) {
                                                                                                 bd.close();
-                                                                                                Intent telaLoguin = new Intent(TelaCadastro.this, TelaLogin.class);
-                                                                                                startActivity(telaLoguin);
+                                                                                                Intent telaLogin = new Intent(TelaCadastro.this, TelaLogin.class);
+                                                                                                startActivity(telaLogin);
                                                                                             }
                                                                                         });
                                                                                         msgCad.show();
@@ -472,7 +473,7 @@ public class TelaCadastro extends AppCompatActivity {
                                                                             //Caso seja apenas Marido
                                                                             else {
                                                                                 if(bd.addMarido(idUser, descricaoAtivi.getText().toString())) {
-                                                                                    int idMarido = bd.pesquisaIdMaridoPorCodigo(user.getId());
+                                                                                    int idMarido = bd.pesquisaIdMaridoPorCodigo(idUser);
 
                                                                                     if(checkAlvenaria.isChecked()) {
                                                                                         bd.addAreaMarido(idMarido, Areas.ALVENARIA);
@@ -497,8 +498,8 @@ public class TelaCadastro extends AppCompatActivity {
                                                                                     msgCad.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                                                                         public void onClick(DialogInterface arg0, int arg1) {
                                                                                             bd.close();
-                                                                                            Intent telaLoguin = new Intent(TelaCadastro.this, TelaLogin.class);
-                                                                                            startActivity(telaLoguin);
+                                                                                            Intent telaLogin = new Intent(TelaCadastro.this, TelaLogin.class);
+                                                                                            startActivity(telaLogin);
                                                                                         }
                                                                                     });
                                                                                     msgCad.show();

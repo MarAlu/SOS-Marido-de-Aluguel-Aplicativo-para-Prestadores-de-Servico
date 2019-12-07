@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class BancoDados extends SQLiteOpenHelper {
 
     private static final int vesao_banco = 1;
-    private static final String banco_sosmaridodealuguel = "bd_marido";
+    private static final String banco_sosmaridodealuguel = "bd_maridos";
 
     //TABELAS
     private static final String tabela_usuario = "tb_user";
@@ -34,7 +34,7 @@ public class BancoDados extends SQLiteOpenHelper {
     private static final String tabela_logado = "tb_logado";
     private static final String tabela_ref_user = "tb_referencia_user";
 
-    //COLUNAS TB_USER
+    //TB_USER
     private static final String col_codigo = "idUser";
     private static final String col_nome = "nome";
     private static final String col_email = "email";
@@ -221,6 +221,8 @@ public class BancoDados extends SQLiteOpenHelper {
             user.setTipoUser(TipoUsuario.valueOf(cursor.getString(7)));
             user.setAtivo(StatusUsuario.valueOf(cursor.getString(8)));
 
+
+
             db.close();
         }
         return user;
@@ -281,7 +283,7 @@ public class BancoDados extends SQLiteOpenHelper {
         return id;
     }
 
-    //APAGA USUARIO (APENAS INATIVA,
+    //APAGA USUARIO (APENAS INATIVA)
     public void apagarUser(Usuario user) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -316,7 +318,7 @@ public class BancoDados extends SQLiteOpenHelper {
     }
 
     //ATUALIZA USUARIO
-    public void atualizaUsuario(Usuario user) {
+    public Boolean atualizaUsuario(int idU, Usuario user) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -328,10 +330,16 @@ public class BancoDados extends SQLiteOpenHelper {
         values.put(col_fone, user.getFone());
         values.put(col_dataNasc, user.getDataNasc());
         values.put(col_senha, user.getSenha());
-        values.put(col_tipoUser, user.getTipoUser().getIdTipo());
+        values.put(col_tipoUser, user.getTipoUser().name());
         values.put(col_ativo, user.getAtivo().name());
 
-        db.update(tabela_usuario, values, col_codigo + " = ?", new String[]{String.valueOf(user.getId())});
+        try {
+            db.update(tabela_usuario, values, col_codigo + " = ?", new String[]{String.valueOf(idU)});
+        }
+        catch (Exception e) {
+            return false;
+        }
+        return true;
     }
 
 
@@ -464,6 +472,23 @@ public class BancoDados extends SQLiteOpenHelper {
         return false;
     }
 
+    //ATUALIZA Marido
+    public Boolean atualizaMarido(int idMar, String descHab) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put(col_habilidade, descHab);
+
+        try {
+            db.update(tabela_marido, values, col_codigo_mar + " = ?", new String[]{String.valueOf(idMar)});
+        }
+        catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
     //INSERT MARIDO AREA
     public Boolean addAreaMarido(int idMarido, Areas dsArea) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -486,14 +511,6 @@ public class BancoDados extends SQLiteOpenHelper {
         return false;
     }
 
-    //BUSCAR AREA MARIDO POR CD MARIDO
-    public Areas bucarMaridoArea(int idMarido) {
-        Areas teste = null;
-
-            System.out.println("eeeeeeeeeeee");
-            teste = Areas.valueOf("ELETRICA");
-        return teste;
-    }
     //BUSCAR AREA MARIDO POR CD MARIDO
     public UsuarioMarido buscarMaridoArea(int idMarido, int idUsuario, String descHab, int servReali, float avaliacao) {
 
@@ -780,6 +797,22 @@ public class BancoDados extends SQLiteOpenHelper {
             values.put(col_id_momento, v.getId());
 
             db.update(tabela_logado, values, col_email + " = ?", new String[]{String.valueOf(v.getEmail())});
+            db.close();
+
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        db.close();
+    }
+    public void atualizaEmailLogado(Visualizacao v, String emailAnt) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        try {
+            values.put(col_email, v.getEmail());
+
+            db.update(tabela_logado, values, col_email + " = ?", new String[]{String.valueOf(emailAnt)});
             db.close();
 
         }

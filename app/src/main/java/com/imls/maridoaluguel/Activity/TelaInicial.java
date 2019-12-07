@@ -28,7 +28,7 @@ public class TelaInicial extends AppCompatActivity {
         //Pegando email de quem está logado
         Usuario usr = GerenciaInstanciaLogin.getInstance().getUsuario();
 
-        Visualizacao view = new Visualizacao();
+        Visualizacao view;
 
         view = bd.buscaLogado();
 

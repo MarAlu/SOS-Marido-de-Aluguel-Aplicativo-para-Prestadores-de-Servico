@@ -13,7 +13,7 @@
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:textColorHint="#000000"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"

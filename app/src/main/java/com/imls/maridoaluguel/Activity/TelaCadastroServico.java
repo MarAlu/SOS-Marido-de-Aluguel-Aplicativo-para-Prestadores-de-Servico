@@ -38,21 +38,21 @@ public class TelaCadastroServico extends AppCompatActivity {
         userCompleto.setUserMarido(bd.buscarMaridoPorCdUser(userCompleto.getUser().getId()));
 
         //Check Áreas
-        final CheckBox checkEletrica = findViewById(R.id.checkEletricaS);
-        final CheckBox checkEncanamento = findViewById(R.id.checkEncanamentoS);
-        final CheckBox checkPintura = findViewById(R.id.checkPinturaS);
-        final CheckBox checkAlvenaria = findViewById(R.id.checkAlvenariaS);
-        final CheckBox checkMarcenaria = findViewById(R.id.checkMarcenariaS);
-        final CheckBox checkOutros = findViewById(R.id.checkOutrosS);
+        final CheckBox checkEletrica = findViewById(R.id.checkEletricaTCS);
+        final CheckBox checkEncanamento = findViewById(R.id.checkEncanamentoTCS);
+        final CheckBox checkPintura = findViewById(R.id.checkPinturaTCS);
+        final CheckBox checkAlvenaria = findViewById(R.id.checkAlvenariaTCS);
+        final CheckBox checkMarcenaria = findViewById(R.id.checkMarcenariaTCS);
+        final CheckBox checkOutros = findViewById(R.id.checkOutrosTCS);
 
         //Campos text
-        final TextView nome = findViewById(R.id.viewNomeS);
-        final TextView cidade = findViewById(R.id.viewCidadeS);
-        final TextView foneContato = findViewById(R.id.viewFoneS);
+        final TextView nome = findViewById(R.id.viewNomeTCS);
+        final TextView cidade = findViewById(R.id.viewCidadeTCS);
+        final TextView foneContato = findViewById(R.id.viewFoneTCS);
 
-        final EditText fon = findViewById(R.id.editTFS);
+        final EditText fon = findViewById(R.id.editTCS);
 
-        final EditText descricaoAtivi = findViewById(R.id.textDescAtividadesS);
+        final EditText descricaoAtivi = findViewById(R.id.textDescAtividadesTCS);
         //Torna campo descrição rolável
         descricaoAtivi.setVerticalScrollBarEnabled(true);
         descricaoAtivi.setOverScrollMode(View.OVER_SCROLL_ALWAYS);

@@ -18,14 +18,10 @@ import com.imls.maridoaluguel.Business.Visualizacao;
 import com.imls.maridoaluguel.Enum.Areas;
 import com.imls.maridoaluguel.Form.Usuario;
 import com.imls.maridoaluguel.Form.UsuarioCompleto;
-import com.imls.maridoaluguel.Form.UsuarioDomestico;
-import com.imls.maridoaluguel.Form.UsuarioMarido;
 import com.imls.maridoaluguel.R;
 import com.imls.maridoaluguel.Util.GerenciaInstanciaLogin;
 import com.imls.maridoaluguel.Util.Mascaras;
 
-import java.text.ParseException;
-import java.util.ArrayList;
 
 public class TelaPerfil extends AppCompatActivity {
 
@@ -49,36 +45,37 @@ public class TelaPerfil extends AppCompatActivity {
         userCompleto.setUserMarido(bd.buscarMaridoPorCdUser(userCompleto.getUser().getId()));
 
         //Botão Cadastrar
-        final Button btnEditar = findViewById(R.id.btnEditar);
-        final Button btnEditar2 = findViewById(R.id.btnEditar2);
-        final Button btnView = findViewById(R.id.btnView);
+        final Button btnEditar = findViewById(R.id.btnEditarTPU);
+        final Button btnEditar2 = findViewById(R.id.btnEditar2TPU);
+        final Button btnView = findViewById(R.id.btnViewTPU);
 
         //Check Tipos User
-        final CheckBox checkDomestico = findViewById(R.id.checkUsuarioDomw);
-        final CheckBox checkMarido = findViewById(R.id.checkMaridoDeAluguelw);
+        final CheckBox checkDomestico = findViewById(R.id.checkUsuarioDomTPU);
+        final CheckBox checkMarido = findViewById(R.id.checkMaridoDeAluguelTPU);
 
         //Check Áreas
-        final CheckBox checkEletrica = findViewById(R.id.checkEletricaw);
-        final CheckBox checkEncanamento = findViewById(R.id.checkEncanamentow);
-        final CheckBox checkPintura = findViewById(R.id.checkPinturaw);
-        final CheckBox checkAlvenaria = findViewById(R.id.checkAlvenariaw);
-        final CheckBox checkMarcenaria = findViewById(R.id.checkMarcenariaw);
-        final CheckBox checkOutros = findViewById(R.id.checkOutrosw);
+        final CheckBox checkEletrica = findViewById(R.id.checkEletricaTPU);
+        final CheckBox checkEncanamento = findViewById(R.id.checkEncanamentoTPU);
+        final CheckBox checkPintura = findViewById(R.id.checkPinturaTPU);
+        final CheckBox checkAlvenaria = findViewById(R.id.checkAlvenariaTPU);
+        final CheckBox checkMarcenaria = findViewById(R.id.checkMarcenariaTPU);
+        final CheckBox checkOutros = findViewById(R.id.checkOutrosTPU);
 
         //Campos view
-        final TextView msgInfo = findViewById(R.id.viewInfoCad);
-        final TextView nome = findViewById(R.id.viewNome);
-        final TextView email = findViewById(R.id.viewEmail);
-        final TextView cidade = findViewById(R.id.viewCidade);
-        final TextView estado = findViewById(R.id.viewEstado);
-        final TextView dataNasc = findViewById(R.id.viewDataNasc);
-        final TextView foneContato = findViewById(R.id.viewFone);
-        final TextView senha = findViewById(R.id.viewSenha);
+        final TextView msgInfo = findViewById(R.id.viewInfoCadTPU);
+        final TextView nome = findViewById(R.id.viewNomeTPU);
+        final TextView email = findViewById(R.id.viewEmailTPU);
+        final TextView cidade = findViewById(R.id.viewCidadeTPU);
+        final TextView estado = findViewById(R.id.viewEstadoTPU);
+        final TextView dataNasc = findViewById(R.id.viewDataNascTPU);
+        final TextView foneContato = findViewById(R.id.viewFoneTPU);
+        final TextView senha = findViewById(R.id.viewSenhaTPU);
 
-        final EditText dat = findViewById(R.id.editTD);
-        final EditText fon = findViewById(R.id.editTF);
+        final EditText dat = findViewById(R.id.editDataTPU);
+        final EditText fon = findViewById(R.id.editFoneTPU);
 
-        final TextView descricaoAtivi = findViewById(R.id.viewDescAtividades);
+        final TextView descricaoAtivi = findViewById(R.id.viewDescAtividadesTPU);
+
         //Torna campo descrição rolável
         descricaoAtivi.setVerticalScrollBarEnabled(true);
         descricaoAtivi.setOverScrollMode(View.OVER_SCROLL_ALWAYS);
@@ -102,31 +99,9 @@ public class TelaPerfil extends AppCompatActivity {
         dat.addTextChangedListener(Mascaras.mask(dat, Mascaras.FORMAT_DATE));
 
 
+        userCompleto.setUserMarido(bd.buscarMaridoArea(userCompleto.getUserMarido().getIdMarido(), userCompleto.getUserMarido().getIdUsuario(),
+                userCompleto.getUserMarido().getDescHabilidade(), userCompleto.getUserMarido().getServicosRealizados(), userCompleto.getUserMarido().getAvaliacao()));
 
-        AlertDialog.Builder msgU = new AlertDialog.Builder(TelaPerfil.this);
-        msgU.setNeutralButton("OK", null);
-
-/*
-            msgU.setTitle("Usuário");
-            msgU.setMessage("IdUser: " +userCompleto.getUser().getId()+ "\n" +
-                    "Nome: " +userCompleto.getUser().getNome()+ "\n" +
-                    "E-mail: " +userCompleto.getUser().getEmail()+ "\n" +
-                    "Fone: " +userCompleto.getUser().getFone()+ "\n" +
-                    "Data: " +userCompleto.getUser().getDataNasc()+ "\n" +
-                    "Tipo: " +userCompleto.getUser().getTipoUser()+ "\n" +
-                    "Ativo: " +userCompleto.getUser().getAtivo()+ "\n" +
-                    "Cidade: " +userCompleto.getUser().getCidade()+ "\n" +
-                    "Estado: " +userCompleto.getUser().getEstado()+ "\n");
-            msgU.show();
-*/
-
-
-            userCompleto.setUserMarido(bd.buscarMaridoArea(userCompleto.getUserMarido().getIdMarido(), userCompleto.getUserMarido().getIdUsuario(),
-                    userCompleto.getUserMarido().getDescHabilidade(), userCompleto.getUserMarido().getServicosRealizados(), userCompleto.getUserMarido().getAvaliacao()));
-
-
-
-        //System.out.println(bd.buscarMaridoArea(userCompleto.getUserMarido().getIdMarido()));
 
         //SETA COMO INVISIVEL CAMPOS RELACIONADOS AO MARIDO
         if(userCompleto.getUser().getTipoUser().name().equals("DOMESTICO")) {
@@ -151,12 +126,14 @@ public class TelaPerfil extends AppCompatActivity {
 
         //SETA COMO INVISIVEL BOTAO DE EDITAR
         if(userCompleto.getUser().getTipoUser().name().equals("DOMESTICO_E_MARIDO")) {
-            Visualizacao view = new Visualizacao();
+
+            msgInfo.setText("Suas áreas de habilidade!");
+
+            Visualizacao view;
 
             view = bd.buscaLogado();
 
             btnView.setText(view.getTipo());
-
 
             final Visualizacao finalView = view;
             btnView.setOnClickListener(new View.OnClickListener() {
@@ -189,35 +166,22 @@ public class TelaPerfil extends AppCompatActivity {
                 }
             });
 
-            checkEletrica.setVisibility(View.INVISIBLE);
-            checkEncanamento.setVisibility(View.INVISIBLE);
-            checkAlvenaria.setVisibility(View.INVISIBLE);
-            checkMarcenaria.setVisibility(View.INVISIBLE);
-            checkPintura.setVisibility(View.INVISIBLE);
-            checkOutros.setVisibility(View.INVISIBLE);
-
             if(!userCompleto.getUserMarido().getAreaEletrica().equals(Areas.A) && userCompleto.getUserMarido().getAreaEletrica().name().equals("ELETRICA")) {
-                checkEletrica.setVisibility(View.VISIBLE);
                 checkEletrica.setChecked(true);
             }
             if(!userCompleto.getUserMarido().getAreaEncanamento().equals(Areas.A) && userCompleto.getUserMarido().getAreaEncanamento().name().equals("ENCANAMENTO")) {
-                checkEncanamento.setVisibility(View.VISIBLE);
                 checkEncanamento.setChecked(true);
             }
             if(!userCompleto.getUserMarido().getAreaAlvenaria().equals(Areas.A) && userCompleto.getUserMarido().getAreaAlvenaria().name().equals("ALVENARIA")) {
-                checkAlvenaria.setVisibility(View.VISIBLE);
                 checkAlvenaria.setChecked(true);
             }
             if(!userCompleto.getUserMarido().getAreaMarcenaria().equals(Areas.A) && userCompleto.getUserMarido().getAreaMarcenaria().name().equals("MARCENARIA")) {
-                checkMarcenaria.setVisibility(View.VISIBLE);
                 checkMarcenaria.setChecked(true);
             }
             if(!userCompleto.getUserMarido().getAreaPintura().equals(Areas.A) && userCompleto.getUserMarido().getAreaPintura().name().equals("PINTURA")) {
-                checkPintura.setVisibility(View.VISIBLE);
                 checkPintura.setChecked(true);
             }
             if(!userCompleto.getUserMarido().getAreaOutros().equals(Areas.A) && userCompleto.getUserMarido().getAreaOutros().name().equals("OUTROS")) {
-                checkOutros.setVisibility(View.VISIBLE);
                 checkOutros.setChecked(true);
             }
 
@@ -227,41 +191,32 @@ public class TelaPerfil extends AppCompatActivity {
             btnEditar.setVisibility(View.GONE);
         }
 
+
+
         //SETA COMO INVISIVEL BOTAO DE EDITAR E CHECK DOMESTICO
         if(userCompleto.getUser().getTipoUser().name().equals("MARIDO_ALUGUEL")) {
+
+            msgInfo.setText("Suas áreas de habilidade!");
 
             btnView.setText("MARIDO");
 
 
-            checkEletrica.setVisibility(View.GONE);
-            checkEncanamento.setVisibility(View.GONE);
-            checkAlvenaria.setVisibility(View.GONE);
-            checkMarcenaria.setVisibility(View.GONE);
-            checkPintura.setVisibility(View.GONE);
-            checkOutros.setVisibility(View.GONE);
-
             if(!userCompleto.getUserMarido().getAreaEletrica().equals(Areas.A) && userCompleto.getUserMarido().getAreaEletrica().name().equals("ELETRICA")) {
-                checkEletrica.setVisibility(View.VISIBLE);
                 checkEletrica.setChecked(true);
             }
             if(!userCompleto.getUserMarido().getAreaEncanamento().equals(Areas.A) && userCompleto.getUserMarido().getAreaEncanamento().name().equals("ENCANAMENTO")) {
-                checkEncanamento.setVisibility(View.VISIBLE);
                 checkEncanamento.setChecked(true);
             }
             if(!userCompleto.getUserMarido().getAreaAlvenaria().equals(Areas.A) && userCompleto.getUserMarido().getAreaAlvenaria().name().equals("ALVENARIA")) {
-                checkAlvenaria.setVisibility(View.VISIBLE);
                 checkAlvenaria.setChecked(true);
             }
             if(!userCompleto.getUserMarido().getAreaMarcenaria().equals(Areas.A) && userCompleto.getUserMarido().getAreaMarcenaria().name().equals("MARCENARIA")) {
-                checkMarcenaria.setVisibility(View.VISIBLE);
                 checkMarcenaria.setChecked(true);
             }
             if(!userCompleto.getUserMarido().getAreaPintura().equals(Areas.A) && userCompleto.getUserMarido().getAreaPintura().name().equals("PINTURA")) {
-                checkPintura.setVisibility(View.VISIBLE);
                 checkPintura.setChecked(true);
             }
             if(!userCompleto.getUserMarido().getAreaOutros().equals(Areas.A) && userCompleto.getUserMarido().getAreaOutros().name().equals("OUTROS")) {
-                checkOutros.setVisibility(View.VISIBLE);
                 checkOutros.setChecked(true);
             }
 
@@ -291,58 +246,73 @@ public class TelaPerfil extends AppCompatActivity {
             }
         });
 
-
-
-        final UsuarioMarido userMar = userCompleto.getUserMarido();
         checkEletrica.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (userMar.getAreaEletrica().name().equals("ELETRICA")) {
-                    checkEletrica.setChecked(true);
+                if(userCompleto.getUserMarido().getAreaEletrica().equals(Areas.A) && !userCompleto.getUserMarido().getAreaEletrica().name().equals("ELETRICA")){
+                    checkEletrica.setChecked(false);
                 }
-            }
-        });
-
-        checkAlvenaria.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (userMar.getAreaAlvenaria().name().equals("ALVENARIA")) {
-                    checkAlvenaria.setChecked(true);
+                else {
+                    checkEletrica.setChecked(true);
                 }
             }
         });
         checkEncanamento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (userMar.getAreaEncanamento().name().equals("ENCANAMENTO")) {
+                if(userCompleto.getUserMarido().getAreaEncanamento().equals(Areas.A) && !userCompleto.getUserMarido().getAreaEncanamento().name().equals("ENCANAMENTO")){
+                    checkEncanamento.setChecked(false);
+                }
+                else {
                     checkEncanamento.setChecked(true);
                 }
             }
         });
-        checkMarcenaria.setOnClickListener(new View.OnClickListener() {
+        checkAlvenaria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (userMar.getAreaMarcenaria().name().equals("MARCENARIA")) {
-                    checkMarcenaria.setChecked(true);
+                if(userCompleto.getUserMarido().getAreaAlvenaria().equals(Areas.A) && !userCompleto.getUserMarido().getAreaAlvenaria().name().equals("ALVENARIA")){
+                    checkAlvenaria.setChecked(false);
+                }
+                else {
+                    checkAlvenaria.setChecked(true);
                 }
             }
         });
         checkPintura.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (userMar.getAreaPintura().name().equals("PINTURA")) {
+                if(userCompleto.getUserMarido().getAreaPintura().equals(Areas.A) && !userCompleto.getUserMarido().getAreaPintura().name().equals("PINTURA")){
+                    checkPintura.setChecked(false);
+                }
+                else {
                     checkPintura.setChecked(true);
+                }
+            }
+        });
+        checkMarcenaria.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(userCompleto.getUserMarido().getAreaMarcenaria().equals(Areas.A) && !userCompleto.getUserMarido().getAreaMarcenaria().name().equals("MARCENARIA")){
+                    checkMarcenaria.setChecked(false);
+                }
+                else {
+                    checkMarcenaria.setChecked(true);
                 }
             }
         });
         checkOutros.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (userMar.getAreaOutros().name().equals("OUTROS")) {
+                if(userCompleto.getUserMarido().getAreaOutros().equals(Areas.A) && !userCompleto.getUserMarido().getAreaOutros().name().equals("OUTROS")){
+                    checkOutros.setChecked(false);
+                }
+                else {
                     checkOutros.setChecked(true);
                 }
             }
         });
+
 
 
         dat.setText(userCompleto.getUser().getDataNasc());
@@ -357,6 +327,21 @@ public class TelaPerfil extends AppCompatActivity {
         senha.setText("******");
         foneContato.setText(fon.getText().toString());
 
+
+        btnEditar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent telaEditPerfil = new Intent(TelaPerfil.this, TelaEditPerfil.class);
+                startActivity(telaEditPerfil);
+            }
+        });
+        btnEditar2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent telaEditPerfil = new Intent(TelaPerfil.this, TelaEditPerfil.class);
+                startActivity(telaEditPerfil);
+            }
+        });
 
     }
 }

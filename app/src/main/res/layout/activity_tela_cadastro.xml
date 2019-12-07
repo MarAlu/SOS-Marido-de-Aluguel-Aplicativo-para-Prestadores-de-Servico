@@ -20,7 +20,7 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/viewNomeS"
+                android:id="@+id/textNomeTCU"
                 style="@style/Widget.AppCompat.AutoCompleteTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -43,10 +43,10 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/textEmail"
+                android:id="@+id/textEmailTCU"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/viewNomeS"
+                android:layout_below="@+id/textNomeTCU"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="60dp"
@@ -62,13 +62,13 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.502"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/viewNomeS" />
+                app:layout_constraintTop_toBottomOf="@+id/textNomeTCU" />
 
             <EditText
-                android:id="@+id/textSenha"
+                android:id="@+id/textSenhaTCU"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/viewFoneS"
+                android:layout_below="@+id/textFoneTCU"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="60dp"
@@ -83,13 +83,13 @@
                 android:textColorHint="#000000"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textEmail" />
+                app:layout_constraintTop_toBottomOf="@+id/textEmailTCU" />
 
             <EditText
-                android:id="@+id/textConfSenha"
+                android:id="@+id/textConfSenhaTCU"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textSenha"
+                android:layout_below="@+id/textSenhaTCU"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="60dp"
@@ -106,14 +106,14 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textSenha"
+                app:layout_constraintTop_toBottomOf="@+id/textSenhaTCU"
                 app:layout_constraintVertical_bias="0.01" />
 
             <EditText
-                android:id="@+id/viewCidadeS"
+                android:id="@+id/textCidadeTCU"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textEmail"
+                android:layout_below="@+id/textEmailTCU"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="60dp"
@@ -130,14 +130,14 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textEstado"
+                app:layout_constraintTop_toBottomOf="@+id/textEstadoTCU"
                 app:layout_constraintVertical_bias="0.023" />
 
             <EditText
-                android:id="@+id/textEstado"
+                android:id="@+id/textEstadoTCU"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/viewCidadeS"
+                android:layout_below="@+id/textCidadeTCU"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="60dp"
@@ -154,14 +154,14 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textConfSenha"
+                app:layout_constraintTop_toBottomOf="@+id/textConfSenhaTCU"
                 app:layout_constraintVertical_bias="0.012" />
 
             <EditText
-                android:id="@+id/textDataNasc"
+                android:id="@+id/textDataNascTCU"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textEstado"
+                android:layout_below="@+id/textEstadoTCU"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="60dp"
@@ -178,14 +178,14 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/viewCidadeS"
+                app:layout_constraintTop_toBottomOf="@+id/textCidadeTCU"
                 app:layout_constraintVertical_bias="0.014" />
 
             <EditText
-                android:id="@+id/viewFoneS"
+                android:id="@+id/textFoneTCU"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textDataNasc"
+                android:layout_below="@+id/textDataNascTCU"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="60dp"
@@ -198,10 +198,10 @@
                 android:textColorHint="#000000" />
 
             <CheckBox
-                android:id="@+id/checkMaridoDeAluguel"
+                android:id="@+id/checkMaridoDeAluguelTCU"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/checkUsuarioDom"
+                android:layout_below="@+id/checkUsuarioDomTCU"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="99dp"
@@ -211,19 +211,18 @@
                 android:foregroundGravity="center"
                 android:text="Marido de Aluguel"
                 android:textColor="#000000"
-                app:layout_constraintBottom_toTopOf="@+id/btnCriarServico"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.365"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkUsuarioDom"
+                app:layout_constraintTop_toBottomOf="@+id/checkUsuarioDomTCU"
                 app:layout_constraintVertical_bias="0.212"
                 tools:ignore="UnknownId" />
 
             <CheckBox
-                android:id="@+id/checkUsuarioDom"
+                android:id="@+id/checkUsuarioDomTCU"
                 android:layout_width="213dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textConfSenha"
+                android:layout_below="@+id/textConfSenhaTCU"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="99dp"
@@ -235,10 +234,10 @@
                 android:textColor="#000000" />
 
             <TextView
-                android:id="@+id/textvInfoCadS"
+                android:id="@+id/textvInfoCadTCU"
                 android:layout_width="334dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/checkMaridoDeAluguel"
+                android:layout_below="@+id/checkMaridoDeAluguelTCU"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="35dp"
@@ -251,10 +250,10 @@
                 android:textSize="14sp" />
 
             <CheckBox
-                android:id="@+id/checkEletricaS"
+                android:id="@+id/checkEletricaTCU"
                 android:layout_width="182dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textvInfoCadS"
+                android:layout_below="@+id/textvInfoCadTCU"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="5dp"
@@ -265,10 +264,10 @@
                 android:textColor="#000000" />
 
             <CheckBox
-                android:id="@+id/checkEncanamentoS"
+                android:id="@+id/checkEncanamentoTCU"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textvInfoCadS"
+                android:layout_below="@+id/textvInfoCadTCU"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="195dp"
@@ -279,10 +278,10 @@
                 android:textColor="#000000" />
 
             <CheckBox
-                android:id="@+id/checkAlvenariaS"
+                android:id="@+id/checkAlvenariaTCU"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/checkEletricaS"
+                android:layout_below="@+id/checkEletricaTCU"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="5dp"
@@ -293,10 +292,10 @@
                 android:textColor="#000000" />
 
             <CheckBox
-                android:id="@+id/checkPinturaS"
+                android:id="@+id/checkPinturaTCU"
                 android:layout_width="136dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/checkEncanamentoS"
+                android:layout_below="@+id/checkEncanamentoTCU"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="195dp"
@@ -307,10 +306,10 @@
                 android:textColor="#000000" />
 
             <CheckBox
-                android:id="@+id/checkMarcenariaS"
+                android:id="@+id/checkMarcenariaTCU"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/checkAlvenariaS"
+                android:layout_below="@+id/checkAlvenariaTCU"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="5dp"
@@ -321,10 +320,10 @@
                 android:textColor="#000000" />
 
             <CheckBox
-                android:id="@+id/checkOutrosS"
+                android:id="@+id/checkOutrosTCU"
                 android:layout_width="117dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/checkPinturaS"
+                android:layout_below="@+id/checkPinturaTCU"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="195dp"
@@ -336,10 +335,10 @@
 
 
             <EditText
-                android:id="@+id/textDescAtividadesS"
+                android:id="@+id/textDescAtividadesTCU"
                 android:layout_width="wrap_content"
                 android:layout_height="250dp"
-                android:layout_alignTop="@+id/checkOutrosS"
+                android:layout_alignTop="@+id/checkOutrosTCU"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="60dp"
@@ -365,10 +364,10 @@
                 android:textColorHint="#000000" />
 
             <Button
-                android:id="@+id/btnCriarServico"
+                android:id="@+id/btnCadastrarTCU"
                 android:layout_width="161dp"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/checkMaridoDeAluguel"
+                android:layout_below="@+id/checkMaridoDeAluguelTCU"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="122dp"
@@ -381,14 +380,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textConfSenha"
+                app:layout_constraintTop_toBottomOf="@+id/textConfSenhaTCU"
                 app:layout_constraintVertical_bias="0.836" />
 
             <Button
-                android:id="@+id/btnCadastrar2"
+                android:id="@+id/btnCadastrar2TCU"
                 android:layout_width="161dp"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/textDescAtividadesS"
+                android:layout_below="@+id/textDescAtividadesTCU"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="121dp"
@@ -401,7 +400,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textConfSenha"
+                app:layout_constraintTop_toBottomOf="@+id/textConfSenhaTCU"
                 app:layout_constraintVertical_bias="0.836" />
 
         </RelativeLayout>

@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 
@@ -14,7 +13,6 @@ import com.imls.maridoaluguel.Form.Usuario;
 import com.imls.maridoaluguel.R;
 import com.imls.maridoaluguel.Util.GerenciaInstanciaLogin;
 
-import java.text.ParseException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Visualizacao view = new Visualizacao();
+        Visualizacao view;
 
         if(bd.verificaLogado() == true) {
             view = bd.buscaLogado();
@@ -40,8 +38,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(telaInicial);
             }
         }
-
-
 
         Button btnChamaLogin = findViewById(R.id.btnChamaLogin);
         Button btnChamaCadastro = findViewById(R.id.btnChamaCadastro);

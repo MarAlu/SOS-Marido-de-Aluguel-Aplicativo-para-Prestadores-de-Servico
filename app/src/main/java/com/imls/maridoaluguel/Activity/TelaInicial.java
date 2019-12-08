@@ -76,6 +76,7 @@ public class TelaInicial extends AppCompatActivity {
         btnChamaTelaVisualizarProfissionais.setVisibility(View.GONE);
 
         if(view.getTipo().equals("DOMÉSTICO")) {
+
             btnChamaTelaCadastroServico.setVisibility(View.VISIBLE);
 
             servTiAceitoMar.setVisibility(View.GONE);
@@ -93,6 +94,12 @@ public class TelaInicial extends AppCompatActivity {
             servConcluidoDom.setVisibility(View.VISIBLE);
             servCanceladoDom.setVisibility(View.VISIBLE);
             servRecusadoDom.setVisibility(View.VISIBLE);
+
+            servAbertoDom.setText(bd.contaServicosAbertosDom(view.getId()).toString());
+            servAceitoDom.setText((bd.contaServicosAceitosDom(view.getId()).toString()));
+            servConcluidoDom.setText(bd.contaServicoConcluidosDom(view.getId()).toString());
+            servCanceladoDom.setText(bd.contaServicosCanceladosDom(view.getId()).toString());
+            servRecusadoDom.setText(bd.contaServicosRecusadosDom(view.getId()).toString());
 
         }
         if(view.getTipo().equals("MARIDO")) {
@@ -114,6 +121,9 @@ public class TelaInicial extends AppCompatActivity {
             servConcluidoDom.setVisibility(View.GONE);
             servCanceladoDom.setVisibility(View.GONE);
             servRecusadoDom.setVisibility(View.GONE);
+
+            servAceitoMar.setText(bd.contaServicosAceitosMar(view.getId()).toString());
+            servFinalizadoMar.setText(bd.contaServicosFinalizadosMar(view.getId()).toString());
         }
 
         if(btnChamaTelaCadastroServico.getVisibility() != View.VISIBLE) {

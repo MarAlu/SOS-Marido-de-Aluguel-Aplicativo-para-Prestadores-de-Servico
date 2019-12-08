@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.hardware.Camera;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.imls.maridoaluguel.Business.Visualizacao;
 import com.imls.maridoaluguel.Enum.Areas;
 import com.imls.maridoaluguel.Enum.StatusServico;
@@ -21,6 +24,12 @@ import com.imls.maridoaluguel.Form.UsuarioMarido;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+
+import static com.imls.maridoaluguel.Enum.StatusServico.ABERTO;
 
 public class BancoDados extends SQLiteOpenHelper {
 
@@ -518,6 +527,89 @@ public class BancoDados extends SQLiteOpenHelper {
         return userDom;
     }
 
+    //VERIFICA SERVICOS ABERTO
+    public Integer contaServicosAbertosDom(int idDom) {
+        int qtd = 0;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "select  "+ col_status_serv +"  from "+ tabela_servico +" where "+ col_codigo_dom_in_serv +" = "+ idDom +" and "+ col_status_serv +" = 'ABERTO'";
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        for(int i=0; i<cursor.getCount(); i++) {
+            qtd+=1;
+        }
+        return qtd;
+    }
+
+    //VERIFICA SERVICOS ACEITO
+    public Integer contaServicosAceitosDom(int idDom) {
+        int qtd = 0;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "select  "+ col_status_serv +"  from "+ tabela_servico +" where "+ col_codigo_dom_in_serv +" = "+ idDom +" and "+ col_status_serv +" = 'ACEITO'";
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        for(int i=0; i<cursor.getCount(); i++) {
+            qtd+=1;
+        }
+        return qtd;
+    }
+
+    //VERIFICA SERVICOS CANCELADOS
+    public Integer contaServicosCanceladosDom(int idDom) {
+        int qtd = 0;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "select  "+ col_status_serv +"  from "+ tabela_servico +" where "+ col_codigo_dom_in_serv +" = "+ idDom +" and "+ col_status_serv +" = 'CANCELADO'";
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        for(int i=0; i<cursor.getCount(); i++) {
+            qtd+=1;
+        }
+        return qtd;
+    }
+
+    //VERIFICA SERVICOS CONCLUIDOS
+    public Integer contaServicoConcluidosDom(int idDom) {
+        int qtd = 0;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "select  "+ col_status_serv +"  from "+ tabela_servico +" where "+ col_codigo_dom_in_serv +" = "+ idDom +" and "+ col_status_serv +" = 'CONCLUIDO'";
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        for(int i=0; i<cursor.getCount(); i++) {
+            qtd+=1;
+        }
+        return qtd;
+    }
+
+    //VERIFICA SERVICOS RECUSADOS
+    public Integer contaServicosRecusadosDom(int idDom) {
+        int qtd = 0;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "select  "+ col_status_serv +"  from "+ tabela_servico +" where "+ col_codigo_dom_in_serv +" = "+ idDom +" and "+ col_status_serv +" = 'RECUSADO'";
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        for(int i=0; i<cursor.getCount(); i++) {
+            qtd+=1;
+        }
+        return qtd;
+    }
+
+
+
+
 
 
 
@@ -747,7 +839,37 @@ public class BancoDados extends SQLiteOpenHelper {
         return nomeDom;
     }
 
+    //VERIFICA SERVICOS ACEITO
+    public Integer contaServicosAceitosMar(int idMar) {
+        int qtd = 0;
 
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "select  "+ col_status_serv +"  from "+ tabela_servico +" where "+ col_codigo_mar_in_serv +" = "+ idMar +" and "+ col_status_serv +" = 'ACEITO'";
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        for(int i=0; i<cursor.getCount(); i++) {
+            qtd+=1;
+        }
+        return qtd;
+    }
+
+    //VERIFICA SERVICOS ACEITO
+    public Integer contaServicosFinalizadosMar(int idMar) {
+        int qtd = 0;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "select  "+ col_status_serv +"  from "+ tabela_servico +" where "+ col_codigo_mar_in_serv +" = "+ idMar +" and "+ col_status_serv +" = 'CONCLUIDO'";
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        for(int i=0; i<cursor.getCount(); i++) {
+            qtd+=1;
+        }
+        return qtd;
+    }
 
 
 
@@ -869,6 +991,8 @@ public class BancoDados extends SQLiteOpenHelper {
                 serv.setFoneDomestico(cursor.getString(7));
                 serv.setAreaServico(Areas.valueOf(cursor.getString(8)));
                 serv.setTipoServico(TipoServico.valueOf(cursor.getString(9)));
+
+
 
                 listaServicos.add(serv);
             }

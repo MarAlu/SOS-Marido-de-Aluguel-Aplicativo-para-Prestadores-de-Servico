@@ -2,17 +2,23 @@ package com.imls.maridoaluguel.Activity;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
 import com.imls.maridoaluguel.Banco.BancoDados;
 import com.imls.maridoaluguel.Form.Servico;
 import com.imls.maridoaluguel.R;
+import com.imls.maridoaluguel.Util.Adaptador;
 
 import java.text.ParseException;
 import java.util.ArrayList;
 
 public class TelaVisualizaServicos extends AppCompatActivity {
+
+    RecyclerView recyclerView;
+    Adaptador adpt;
 
     BancoDados bd = new BancoDados(this);
 
@@ -21,10 +27,10 @@ public class TelaVisualizaServicos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_visualiza_servicos);
 
+        recyclerView = findViewById(R.id.recycleServicos);
 
-
-            AlertDialog.Builder msgU = new AlertDialog.Builder(TelaVisualizaServicos.this);
-            msgU.setNeutralButton("OK", null);
+        AlertDialog.Builder msgU = new AlertDialog.Builder(TelaVisualizaServicos.this);
+        msgU.setNeutralButton("OK", null);
 
         ArrayList<Servico> serv = null;
         try {
@@ -33,7 +39,10 @@ public class TelaVisualizaServicos extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        int qtd = serv.size();
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adpt = new Adaptador(this, serv);
+        recyclerView.setAdapter(adpt);
+      /*  int qtd = serv.size();
 
             for(int i=0; i<=(qtd-1); i++) {
 
@@ -48,6 +57,6 @@ public class TelaVisualizaServicos extends AppCompatActivity {
                         "Area: " +serv.get(i).getAreaServico().name()+ "\n" +
                         "Tipo: " +serv.get(i).getTipoServico()+ "\n");
                 msgU.show();
-            }
+            }*/
     }
 }

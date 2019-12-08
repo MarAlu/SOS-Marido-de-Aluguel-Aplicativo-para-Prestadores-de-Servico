@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.imls.maridoaluguel.Banco.BancoDados;
 import com.imls.maridoaluguel.Form.Servico;
+import com.imls.maridoaluguel.Form.UsuarioDomestico;
 import com.imls.maridoaluguel.R;
 
 import java.text.ParseException;
@@ -31,13 +32,17 @@ public class AdaptadorServico extends RecyclerView.Adapter<AdaptadorServico.View
     @NonNull
     @Override
     public AdaptadorServico.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = layoutInflater.from(viewGroup.getContext()).inflate(R.layout.custom_view, viewGroup, false);
+        View view = layoutInflater.from(viewGroup.getContext()).inflate(R.layout.custom_view_servicos, viewGroup, false);
         ViewHolder  v = new ViewHolder(view);
         return v;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
+        UsuarioDomestico userDom = new UsuarioDomestico();
+
+        userDom = bd.buscarDomesticoPorCdDomestico(dados.get(position).getIdDomestico());
 
         holder.area.setText(dados.get(position).getAreaServico().name());
         try {
@@ -46,6 +51,7 @@ public class AdaptadorServico extends RecyclerView.Adapter<AdaptadorServico.View
             e.printStackTrace();
         }
         holder.desc.setText(dados.get(position).getDescServico());
+        holder.nota.setText(converte(userDom.getAvaliacao()));
     }
 
     @Override
@@ -61,10 +67,18 @@ public class AdaptadorServico extends RecyclerView.Adapter<AdaptadorServico.View
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-             nome = itemView.findViewById(R.id.viewNomeTVS);
+             nome = itemView.findViewById(R.id.viewNomeTVP);
              area = itemView.findViewById(R.id.viewAreaTVS);
-             desc = itemView.findViewById(R.id.viewDescTVS);
-             nota = itemView.findViewById(R.id.viewNotaTVS);
+             desc = itemView.findViewById(R.id.viewDescTVP);
+             nota = itemView.findViewById(R.id.viewNotaTVP);
         }
+    }
+
+    public String converte(Float a) {
+        return a.toString();
+    }
+
+    public String converte(Integer a ) {
+        return a.toString();
     }
 }

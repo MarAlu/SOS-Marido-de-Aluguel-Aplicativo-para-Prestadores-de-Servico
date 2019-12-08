@@ -497,6 +497,26 @@ public class BancoDados extends SQLiteOpenHelper {
         return nomeDom;
     }
 
+    //PESQUISA DOMESTICO POR ID DOMESTICO
+    public UsuarioDomestico buscarDomesticoPorCdDomestico(int idDom) {
+
+        UsuarioDomestico userDom = new UsuarioDomestico();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(tabela_domestico, new String[]{col_codigo_dom, col_codigo_in_dom, col_avaliacao_dom},
+                col_codigo_dom + " = ?", new String[]{String.valueOf(idDom)},
+                null, null, null, null);
+
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            userDom.setIdDomestico(Integer.parseInt(cursor.getString(0)));
+            userDom.setIdUsuario(Integer.parseInt(cursor.getString(1)));
+            userDom.setAvaliacao(Float.parseFloat(cursor.getString(2)));
+
+            db.close();
+        }
+        return userDom;
+    }
 
 
 
@@ -641,7 +661,7 @@ public class BancoDados extends SQLiteOpenHelper {
         UsuarioMarido userMar = new UsuarioMarido();
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(tabela_marido, new String[]{col_codigo_mar, col_codigo_in_mar, col_habilidade, col_servicos_rel,col_avaliacao_mar},
+        Cursor cursor = db.query(tabela_marido, new String[]{col_codigo_mar, col_codigo_in_mar, col_habilidade, col_servicos_rel, col_avaliacao_mar},
                 col_codigo_in_mar + " = ?", new String[]{String.valueOf(idUser)},
                 null, null, null, null);
 
@@ -675,6 +695,59 @@ public class BancoDados extends SQLiteOpenHelper {
         }
         return idMarido;
     }
+
+    //LISTAR TODOS OS PROFISSIONAIS CADASTRADOS
+    public ArrayList<UsuarioMarido> listaTodosProfissionais() throws ParseException {
+
+        ArrayList<UsuarioMarido> listaProfissionais = new ArrayList<UsuarioMarido>();
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "select * from " + tabela_marido +" order by "+ col_avaliacao_mar;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                UsuarioMarido userMar = new UsuarioMarido();
+
+                userMar.setIdMarido(Integer.parseInt(cursor.getString(0)));
+                userMar.setIdUsuario(Integer.parseInt(cursor.getString(1)));
+                userMar.setDescHabilidade(cursor.getString(2));
+                userMar.setServicosRealizados(Integer.parseInt(cursor.getString(3)));
+                userMar.setAvaliacao(Float.parseFloat(cursor.getString(4)));
+                userMar.setAreaEletrica(Areas.A);
+                userMar.setAreaEncanamento(Areas.A);
+                userMar.setAreaPintura(Areas.A);
+                userMar.setAreaAlvenaria(Areas.A);
+                userMar.setAreaMarcenaria(Areas.A);
+                userMar.setAreaOutros(Areas.A);
+
+                userMar = buscarMaridoArea(userMar.getIdMarido(), userMar.getIdUsuario(),userMar.getDescHabilidade(),userMar.getServicosRealizados(), userMar.getAvaliacao());
+
+                listaProfissionais.add(userMar);
+            }
+            while (cursor.moveToNext());
+        }
+        return listaProfissionais;
+    }
+
+    //PESQUISA NOME COM ID DOMESTICO
+    public String buscaNomePorIdMarido(int idMar) throws ParseException {
+
+        String nomeDom = "";
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "select "+ col_nome +" from "+ tabela_usuario +", "+ tabela_marido +" where "+ col_codigo_mar +" = "+ idMar +" and "+ col_codigo_in_mar +" = "+ col_codigo;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            return cursor.getString(0);
+        }
+        return nomeDom;
+    }
+
+
 
 
 

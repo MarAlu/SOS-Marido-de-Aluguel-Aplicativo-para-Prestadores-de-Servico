@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.imls.maridoaluguel.Banco.BancoDados;
@@ -38,12 +39,14 @@ public class TelaInicial extends AppCompatActivity {
         }
 
         final Button btnChamaTelaPerfil = findViewById(R.id.btnChamaTelaPerfil);
-        Button btnChamaTelaCadastroServico = findViewById(R.id.btnChamaTelaCadastroServico);
+        final Button btnChamaTelaCadastroServico = findViewById(R.id.btnChamaTelaCadastroServico);
         final Button btnChamaTelaVisualizaServico = findViewById(R.id.btnChamaTelaVisualizaServico);
         final Button btnDeslogar = findViewById(R.id.btnDeslogar);
-        ImageButton btnMenu = findViewById(R.id.btnMenu);
+        final ImageButton btnMenu = findViewById(R.id.btnMenu);
+        final Button btnChamaTelaVisualizarProfissionais = findViewById(R.id.btnChamaTelaVisualizaProfissionais);
 
         ConstraintLayout layout = findViewById(R.id.layoutInicial);
+        RelativeLayout relativeLayout = findViewById(R.id.rlLayout);
 
         //Views Doméstico dash
         TextView servTiAbertoDom = findViewById(R.id.vwTiServAbertoDomTI);
@@ -70,6 +73,7 @@ public class TelaInicial extends AppCompatActivity {
         btnChamaTelaPerfil.setVisibility(View.GONE);
         btnDeslogar.setVisibility(View.GONE);
         btnChamaTelaVisualizaServico.setVisibility(View.GONE);
+        btnChamaTelaVisualizarProfissionais.setVisibility(View.GONE);
 
         if(view.getTipo().equals("DOMÉSTICO")) {
             btnChamaTelaCadastroServico.setVisibility(View.VISIBLE);
@@ -93,6 +97,7 @@ public class TelaInicial extends AppCompatActivity {
         }
         if(view.getTipo().equals("MARIDO")) {
             btnChamaTelaCadastroServico.setVisibility(View.INVISIBLE);
+            btnChamaTelaVisualizarProfissionais.setVisibility(View.INVISIBLE);
 
             servTiAceitoMar.setVisibility(View.VISIBLE);
             servTiFinalizadoMar.setVisibility(View.VISIBLE);
@@ -111,6 +116,10 @@ public class TelaInicial extends AppCompatActivity {
             servRecusadoDom.setVisibility(View.GONE);
         }
 
+        if(btnChamaTelaCadastroServico.getVisibility() != View.VISIBLE) {
+            btnChamaTelaVisualizarProfissionais.setVisibility(View.GONE);
+        }
+
 
         btnChamaTelaPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,6 +127,7 @@ public class TelaInicial extends AppCompatActivity {
                 btnChamaTelaPerfil.setVisibility(View.GONE);
                 btnChamaTelaVisualizaServico.setVisibility(View.GONE);
                 btnDeslogar.setVisibility(View.GONE);
+                btnChamaTelaVisualizarProfissionais.setVisibility(View.GONE);
 
                 Intent telaPerfil = new Intent(TelaInicial.this, TelaPerfil.class);
                 startActivity(telaPerfil);
@@ -130,6 +140,7 @@ public class TelaInicial extends AppCompatActivity {
                 btnChamaTelaPerfil.setVisibility(View.GONE);
                 btnDeslogar.setVisibility(View.GONE);
                 btnChamaTelaVisualizaServico.setVisibility(View.GONE);
+                btnChamaTelaVisualizarProfissionais.setVisibility(View.GONE);
 
                 Intent telaCadastroServico = new Intent(TelaInicial.this, TelaCadastroServico.class);
                 startActivity(telaCadastroServico);
@@ -144,6 +155,7 @@ public class TelaInicial extends AppCompatActivity {
                 btnChamaTelaPerfil.setVisibility(View.GONE);
                 btnDeslogar.setVisibility(View.GONE);
                 btnChamaTelaVisualizaServico.setVisibility(View.GONE);
+                btnChamaTelaVisualizarProfissionais.setVisibility(View.GONE);
 
                 Intent telaMain = new Intent(TelaInicial.this, MainActivity.class);
                 startActivity(telaMain);
@@ -156,9 +168,23 @@ public class TelaInicial extends AppCompatActivity {
                 btnChamaTelaPerfil.setVisibility(View.GONE);
                 btnDeslogar.setVisibility(View.GONE);
                 btnChamaTelaVisualizaServico.setVisibility(View.GONE);
+                btnChamaTelaVisualizarProfissionais.setVisibility(View.GONE);
 
                 Intent telaVisualizaServico = new Intent(TelaInicial.this, TelaVisualizaServicos.class);
                 startActivity(telaVisualizaServico);
+            }
+        });
+
+        btnChamaTelaVisualizarProfissionais.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnChamaTelaPerfil.setVisibility(View.GONE);
+                btnDeslogar.setVisibility(View.GONE);
+                btnChamaTelaVisualizaServico.setVisibility(View.GONE);
+                btnChamaTelaVisualizarProfissionais.setVisibility(View.GONE);
+
+                Intent telaVisualizaProfissionais = new Intent(TelaInicial.this, TelaVisualizaProfissionais.class);
+                startActivity(telaVisualizaProfissionais);
             }
         });
 
@@ -166,14 +192,25 @@ public class TelaInicial extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(btnDeslogar.getVisibility() == View.VISIBLE) {
+
                     btnChamaTelaPerfil.setVisibility(View.GONE);
                     btnDeslogar.setVisibility(View.GONE);
                     btnChamaTelaVisualizaServico.setVisibility(View.GONE);
+                    btnChamaTelaVisualizarProfissionais.setVisibility(View.GONE);
                 }
                 else {
-                    btnChamaTelaPerfil.setVisibility(View.VISIBLE);
-                    btnDeslogar.setVisibility(View.VISIBLE);
-                    btnChamaTelaVisualizaServico.setVisibility(View.VISIBLE);
+                    if(btnChamaTelaCadastroServico.getVisibility() != View.VISIBLE) {
+                        btnChamaTelaPerfil.setVisibility(View.VISIBLE);
+                        btnDeslogar.setVisibility(View.VISIBLE);
+                        btnChamaTelaVisualizaServico.setVisibility(View.VISIBLE);
+                        btnChamaTelaVisualizarProfissionais.setVisibility(View.GONE);
+                    }
+                    else {
+                        btnChamaTelaPerfil.setVisibility(View.VISIBLE);
+                        btnDeslogar.setVisibility(View.VISIBLE);
+                        btnChamaTelaVisualizaServico.setVisibility(View.VISIBLE);
+                        btnChamaTelaVisualizarProfissionais.setVisibility(View.VISIBLE);
+                    }
                 }
             }
         });
@@ -184,6 +221,17 @@ public class TelaInicial extends AppCompatActivity {
                 btnChamaTelaPerfil.setVisibility(View.GONE);
                 btnDeslogar.setVisibility(View.GONE);
                 btnChamaTelaVisualizaServico.setVisibility(View.GONE);
+                btnChamaTelaVisualizarProfissionais.setVisibility(View.GONE);
+            }
+        });
+
+        relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnChamaTelaPerfil.setVisibility(View.GONE);
+                btnDeslogar.setVisibility(View.GONE);
+                btnChamaTelaVisualizaServico.setVisibility(View.GONE);
+                btnChamaTelaVisualizarProfissionais.setVisibility(View.GONE);
             }
         });
     }

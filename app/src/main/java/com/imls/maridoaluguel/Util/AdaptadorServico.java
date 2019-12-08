@@ -1,7 +1,6 @@
 package com.imls.maridoaluguel.Util;
 
 import android.content.Context;
-import android.os.TestLooperManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,24 +9,28 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.imls.maridoaluguel.Banco.BancoDados;
 import com.imls.maridoaluguel.Form.Servico;
 import com.imls.maridoaluguel.R;
 
+import java.text.ParseException;
 import java.util.List;
 
-public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
+public class AdaptadorServico extends RecyclerView.Adapter<AdaptadorServico.ViewHolder> {
 
     private LayoutInflater layoutInflater;
     private List<Servico> dados;
+    private BancoDados bd;
 
-    public Adaptador(Context context, List<Servico> dados) {
+    public AdaptadorServico(Context context, List<Servico> dados) {
+        this.bd = new BancoDados(context);
         this.layoutInflater = LayoutInflater.from(context);
         this.dados = dados;
     }
 
     @NonNull
     @Override
-    public Adaptador.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public AdaptadorServico.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = layoutInflater.from(viewGroup.getContext()).inflate(R.layout.custom_view, viewGroup, false);
         ViewHolder  v = new ViewHolder(view);
         return v;
@@ -36,8 +39,13 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        String a = dados.get(position).getAreaServico().name();
-        holder.area.setText(a);
+        holder.area.setText(dados.get(position).getAreaServico().name());
+        try {
+            holder.nome.setText(bd.buscaNomePorIdDomestico(dados.get(position).getIdDomestico()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        holder.desc.setText(dados.get(position).getDescServico());
     }
 
     @Override

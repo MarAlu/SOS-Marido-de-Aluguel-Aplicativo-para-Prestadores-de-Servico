@@ -10,7 +10,7 @@ import android.os.Bundle;
 import com.imls.maridoaluguel.Banco.BancoDados;
 import com.imls.maridoaluguel.Form.Servico;
 import com.imls.maridoaluguel.R;
-import com.imls.maridoaluguel.Util.Adaptador;
+import com.imls.maridoaluguel.Util.AdaptadorServico;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class TelaVisualizaServicos extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    Adaptador adpt;
+    AdaptadorServico adpt;
 
     BancoDados bd = new BancoDados(this);
 
@@ -40,7 +40,7 @@ public class TelaVisualizaServicos extends AppCompatActivity {
         }
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adpt = new Adaptador(this, serv);
+        adpt = new AdaptadorServico(this, serv);
         recyclerView.setAdapter(adpt);
       /*  int qtd = serv.size();
 

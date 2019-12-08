@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class BancoDados extends SQLiteOpenHelper {
 
     private static final int vesao_banco = 1;
-    private static final String banco_sosmaridodealuguel = "bd_maridos";
+    private static final String banco_sosmaridodealuguel = "bd_maridoss";
 
     //TABELAS
     private static final String tabela_usuario = "tb_user";
@@ -49,20 +49,26 @@ public class BancoDados extends SQLiteOpenHelper {
     private static final String col_ativo = "ativo";
 
     //TB_MARIDO
+    private static final String col_codigo_in_mar = "idUserM";
     private static final String col_codigo_mar = "idMarido";
     private static final String col_habilidade = "descHabilidade";
     private static final String col_avaliacao_mar = "notaAvaliacao";
     private static final String col_servicos_rel = "servicosRealizados";
 
     //TB_DOMESTICO
+    private static final String col_codigo_in_dom = "idUserD";
     private static final String col_codigo_dom = "idDomestico";
     private static final String col_avaliacao_dom = "notaAvaliacao";
+    private static final String col_servicos_fin = "servicosFinalizados";
 
     //TB_MARIDO_AREAS
+    private static final String col_codigo_mar_in_areas = "idMaridoA";
     private static final String col_codigo_area_mar = "idArea";
     private static final String col_area = "cdArea";
 
     //TB_SERVICO
+    private static final String col_codigo_dom_in_serv = "idDomesticoS";
+    private static final String col_codigo_mar_in_serv = "idMaridoS";
     private static final String col_codigo_servico = "idServico";
     private static final String col_descricao_serv = "descricaoServico";
     private static final String col_status_serv = "status";
@@ -75,6 +81,7 @@ public class BancoDados extends SQLiteOpenHelper {
     //TB_LOGADO
     private static final String col_tipo_momento = "tipoUserMomento";
     private static final String col_id_momento = "idUserMomento";
+    private static final String col_email_in_logado = "emailL";
 
 
     public BancoDados(Context context) {
@@ -90,18 +97,18 @@ public class BancoDados extends SQLiteOpenHelper {
                 + col_senha + " text, " + col_tipoUser + " text, " + col_ativo + " text)";
 
         String query_coluna_mar = "create table " + tabela_marido + "("
-                + col_codigo_mar + " integer primary key autoincrement, " + col_codigo + " text, " + col_habilidade + " text, "
+                + col_codigo_mar + " integer primary key autoincrement, " + col_codigo_in_mar + " text, " + col_habilidade + " text, "
                 + col_servicos_rel +" text, " + col_avaliacao_mar + " text)";
 
         String query_coluna_dom = "create table " + tabela_domestico + "("
-                + col_codigo_dom + " integer primary key autoincrement, " + col_codigo + " text, " + col_avaliacao_dom + " text)";
+                + col_codigo_dom + " integer primary key autoincrement, " + col_codigo_in_dom + " text, " + col_servicos_fin + " text, " + col_avaliacao_dom + " text)";
 
         String query_coluna_area = "create table " + tabela_marido_area + "("
-                + col_codigo_area_mar + " integer primary key autoincrement, " + col_area + " text, " + col_codigo_mar + " text)";
+                + col_codigo_area_mar + " integer primary key autoincrement, " + col_area + " text, " + col_codigo_mar_in_areas + " text)";
 
         String query_coluna_servico = "create table " + tabela_servico + "("
-                + col_codigo_servico + " integer primary key autoincrement, " + col_status_serv + " text, " + col_codigo_dom + " text, "
-                + col_codigo_mar + " text," + col_descricao_serv + " text, " + col_avaliacao_serv_dom + " text, "
+                + col_codigo_servico + " integer primary key autoincrement, " + col_status_serv + " text, " + col_codigo_dom_in_serv + " text, "
+                + col_codigo_mar_in_serv + " text," + col_descricao_serv + " text, " + col_avaliacao_serv_dom + " text, "
                 + col_avaliacao_serv_mar + " text, " + col_fone_domestico + " text, " + col_area + " text, " + col_tipo_servico + " text)";
 
         String query_coluna_referencia = "create table " + tabela_ref_user + "("
@@ -113,11 +120,32 @@ public class BancoDados extends SQLiteOpenHelper {
         db.execSQL(query_coluna_area);
         db.execSQL(query_coluna_servico);
         db.execSQL(query_coluna_referencia);
+
+        System.out.println("CRIOU TABELAS");
+
+        db.close();
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onCreate(db);
+    }
+
+    public void dropBanco() {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.execSQL("DROP TABLE IF EXISTS " + tabela_usuario);
+        db.execSQL("DROP TABLE IF EXISTS " + tabela_marido);
+        db.execSQL("DROP TABLE IF EXISTS " + tabela_domestico);
+        db.execSQL("DROP TABLE IF EXISTS " + tabela_marido_area);
+        db.execSQL("DROP TABLE IF EXISTS " + tabela_servico);
+        db.execSQL("DROP TABLE IF EXISTS " + tabela_ref_user);
+
+        System.out.println("APAGOU TABELAS");
+
+        onCreate(db);
+
+        db.close();
     }
 
     ////////////////////////////////////////////////////////////////
@@ -345,6 +373,24 @@ public class BancoDados extends SQLiteOpenHelper {
         return true;
     }
 
+    //CONTA USUÁRIOS
+    public Boolean contaUsuarios() {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "select count(*) from " + tabela_usuario;
+
+        try {
+            Cursor cursor = db.rawQuery(query, null);
+            System.out.println(cursor.getColumnIndex(String.valueOf(0)));
+        }
+        catch (Exception e) {
+            return false;
+        }
+        return true;
+
+    }
+
 
 
 
@@ -369,8 +415,9 @@ public class BancoDados extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         try {
-            values.put(col_codigo, idUser);
-            values.put(col_avaliacao_dom, "0.0");
+            values.put(col_codigo_in_dom, idUser);
+            values.put(col_avaliacao_dom, 0);
+            values.put(col_servicos_fin, 0);
 
             db.insert(tabela_domestico, null, values);
             db.close();
@@ -391,7 +438,7 @@ public class BancoDados extends SQLiteOpenHelper {
 
         //db.delete("tablename","id=? and name=?",new String[]{"1","jack"});
 
-        db.delete(tabela_domestico, col_codigo +" = ?", new String[]{String.valueOf(idUser)});
+        db.delete(tabela_domestico, col_codigo_in_dom +" = ?", new String[]{String.valueOf(idUser)});
 
         db.close();
     }
@@ -402,8 +449,8 @@ public class BancoDados extends SQLiteOpenHelper {
         UsuarioDomestico userDom = new UsuarioDomestico();
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(tabela_domestico, new String[]{col_codigo_dom, col_codigo, col_avaliacao_dom},
-                col_codigo + " = ?", new String[]{String.valueOf(idUser)},
+        Cursor cursor = db.query(tabela_domestico, new String[]{col_codigo_dom, col_codigo_in_dom, col_avaliacao_dom},
+                col_codigo_in_dom + " = ?", new String[]{String.valueOf(idUser)},
                 null, null, null, null);
 
         if (cursor != null && cursor.getCount() > 0) {
@@ -424,7 +471,7 @@ public class BancoDados extends SQLiteOpenHelper {
         int idDom = 0;
 
         Cursor cursor = db.query(tabela_domestico, new String[]{col_codigo_dom},
-                col_codigo + " = ?", new String[]{String.valueOf(idUser)},
+                col_codigo_in_dom + " = ?", new String[]{String.valueOf(idUser)},
                 null, null, null, null);
 
         if (cursor != null && cursor.getCount() > 0) {
@@ -434,6 +481,23 @@ public class BancoDados extends SQLiteOpenHelper {
         }
         return idDom;
     }
+
+    //PESQUISA NOME COM ID DOMESTICO
+    public String buscaNomePorIdDomestico(int idDom) throws ParseException {
+
+        String nomeDom = "";
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "select "+ col_nome +" from "+ tabela_usuario +", "+ tabela_domestico +" where "+ col_codigo_dom +" = "+ idDom +" and "+ col_codigo_in_dom +" = "+ col_codigo;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            return cursor.getString(0);
+        }
+        return nomeDom;
+    }
+
 
 
 
@@ -457,7 +521,7 @@ public class BancoDados extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         try {
-            values.put(col_codigo, idUser);
+            values.put(col_codigo_in_mar, idUser);
             values.put(col_habilidade, descHab);
             values.put(col_servicos_rel, "0");
             values.put(col_avaliacao_mar, "0.0");
@@ -499,7 +563,7 @@ public class BancoDados extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         try {
             values.put(col_area, String.valueOf(dsArea));
-            values.put(col_codigo_mar, idMarido);
+            values.put(col_codigo_mar_in_areas, idMarido);
 
             db.insert(tabela_marido_area, null, values);
             db.close();
@@ -534,7 +598,7 @@ public class BancoDados extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(tabela_marido_area, new String[]{col_area},
-                col_codigo_mar + " = ?", new String[]{String.valueOf(idMarido)},
+                col_codigo_mar_in_areas + " = ?", new String[]{String.valueOf(idMarido)},
                 null, null, null, null);
 
         if (cursor.moveToFirst()) {
@@ -567,7 +631,7 @@ public class BancoDados extends SQLiteOpenHelper {
     public void apagarMarido(int idUser) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        db.delete(tabela_marido, col_codigo +" = ?", new String[]{String.valueOf(idUser)});
+        db.delete(tabela_marido, col_codigo_in_mar +" = ?", new String[]{String.valueOf(idUser)});
 
         db.close();
     }
@@ -578,8 +642,8 @@ public class BancoDados extends SQLiteOpenHelper {
         UsuarioMarido userMar = new UsuarioMarido();
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(tabela_marido, new String[]{col_codigo_mar, col_codigo, col_habilidade, col_servicos_rel,col_avaliacao_mar},
-                col_codigo + " = ?", new String[]{String.valueOf(idUser)},
+        Cursor cursor = db.query(tabela_marido, new String[]{col_codigo_mar, col_codigo_in_mar, col_habilidade, col_servicos_rel,col_avaliacao_mar},
+                col_codigo_in_mar + " = ?", new String[]{String.valueOf(idUser)},
                 null, null, null, null);
 
         if (cursor != null && cursor.getCount() > 0) {
@@ -602,7 +666,7 @@ public class BancoDados extends SQLiteOpenHelper {
         int idMarido = 0;
 
         Cursor cursor = db.query(tabela_marido, new String[]{col_codigo_mar},
-                col_codigo + " = ?", new String[]{String.valueOf(idUser)},
+                col_codigo_in_mar + " = ?", new String[]{String.valueOf(idUser)},
                 null, null, null, null);
 
         if (cursor != null && cursor.getCount() > 0) {
@@ -637,8 +701,8 @@ public class BancoDados extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         try {
             values.put(col_status_serv, servico.getStatusServico().name());
-            values.put(col_codigo_dom, servico.getIdDomestico());
-            values.put(col_codigo_mar, servico.getIdMarido());
+            values.put(col_codigo_dom_in_serv, servico.getIdDomestico());
+            values.put(col_codigo_mar_in_serv, servico.getIdMarido());
             values.put(col_descricao_serv, servico.getDescServico());
             values.put(col_avaliacao_serv_dom, 0);
             values.put(col_avaliacao_serv_mar, 0);
@@ -666,7 +730,7 @@ public class BancoDados extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         try {
             values.put(col_status_serv, servico.getStatusServico().name());
-            values.put(col_codigo_mar, servico.getIdMarido());
+            values.put(col_codigo_mar_in_serv, servico.getIdMarido());
 
             db.update(tabela_servico, values, col_codigo_servico + " = ?", new String[]{String.valueOf(servico.getIdServico())});
             db.close();
@@ -688,8 +752,8 @@ public class BancoDados extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         try {
             values.put(col_status_serv, servico.getStatusServico().name());
-            values.put(col_codigo_dom, servico.getIdDomestico());
-            values.put(col_codigo_mar, servico.getIdMarido());
+            values.put(col_codigo_dom_in_serv, servico.getIdDomestico());
+            values.put(col_codigo_mar_in_serv, servico.getIdMarido());
             values.put(col_descricao_serv, servico.getDescServico());
             values.put(col_avaliacao_serv_dom, 0);
             values.put(col_avaliacao_serv_mar, 0);
@@ -765,14 +829,14 @@ public class BancoDados extends SQLiteOpenHelper {
 
 
         String query_coluna_logado = "create table " + tabela_logado + "("
-                + col_tipo_momento + " text, " + col_id_momento + " text, " + col_email + " text)";
+                + col_tipo_momento + " text, " + col_id_momento + " text, " + col_email_in_logado + " text)";
 
         db.execSQL(query_coluna_logado);
 
         try {
             values.put(col_id_momento, v.getId());
             values.put(col_tipo_momento, v.getTipo());
-            values.put(col_email, v.getEmail());
+            values.put(col_email_in_logado, v.getEmail());
 
             db.insert(tabela_logado, null, values);
             db.close();
@@ -832,7 +896,7 @@ public class BancoDados extends SQLiteOpenHelper {
             values.put(col_tipo_momento, v.getTipo());
             values.put(col_id_momento, v.getId());
 
-            db.update(tabela_logado, values, col_email + " = ?", new String[]{String.valueOf(v.getEmail())});
+            db.update(tabela_logado, values, col_email_in_logado + " = ?", new String[]{String.valueOf(v.getEmail())});
             db.close();
 
         }
@@ -848,7 +912,7 @@ public class BancoDados extends SQLiteOpenHelper {
         try {
             values.put(col_email, v.getEmail());
 
-            db.update(tabela_logado, values, col_email + " = ?", new String[]{String.valueOf(emailAnt)});
+            db.update(tabela_logado, values, col_email_in_logado + " = ?", new String[]{String.valueOf(emailAnt)});
             db.close();
 
         }

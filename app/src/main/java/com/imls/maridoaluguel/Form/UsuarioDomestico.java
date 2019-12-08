@@ -4,6 +4,7 @@ public class UsuarioDomestico {
 
     private int idDomestico;
     private int idUsuario;
+    private int servicosFin;
     private float avaliacao;
 
     public UsuarioDomestico() {
@@ -32,5 +33,13 @@ public class UsuarioDomestico {
 
     public void setAvaliacao(float avaliacao) {
         this.avaliacao = avaliacao;
+    }
+
+    public int getServicosFin() {
+        return servicosFin;
+    }
+
+    public void setServicosFin(int servicosFin) {
+        this.servicosFin = servicosFin;
     }
 }

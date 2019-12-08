@@ -48,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(telaInicial);
             }
             else if(!bd.contaUsuarios()){
-                criaUsuarioReset();
+
+               // criaUsuarioReset();
             }
         }
 

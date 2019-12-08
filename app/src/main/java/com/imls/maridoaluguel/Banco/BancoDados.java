@@ -145,7 +145,6 @@ public class BancoDados extends SQLiteOpenHelper {
 
         onCreate(db);
 
-        db.close();
     }
 
     ////////////////////////////////////////////////////////////////

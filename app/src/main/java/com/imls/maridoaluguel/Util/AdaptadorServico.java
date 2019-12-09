@@ -55,6 +55,7 @@ public class AdaptadorServico extends RecyclerView.Adapter<AdaptadorServico.View
         holder.desc.setText(dados.get(position).getDescServico());
         holder.nota.setText(converte(userDom.getAvaliacao()));
         holder.status.setText(dados.get(position).getStatusServico().name());
+        holder.tipo.setText(dados.get(position).getTipoServico().name());
     }
 
     @Override
@@ -64,7 +65,7 @@ public class AdaptadorServico extends RecyclerView.Adapter<AdaptadorServico.View
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView nome, area, desc, nota, status;
+        TextView nome, area, desc, nota, status, tipo;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -85,6 +86,7 @@ public class AdaptadorServico extends RecyclerView.Adapter<AdaptadorServico.View
              desc = itemView.findViewById(R.id.viewDescTVS);
              nota = itemView.findViewById(R.id.viewNotaTVS);
              status = itemView.findViewById(R.id.viewStatusTVS);
+             tipo = itemView.findViewById(R.id.viewTipoServTVS);
         }
     }
 

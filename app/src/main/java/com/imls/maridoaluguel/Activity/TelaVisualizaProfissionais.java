@@ -30,15 +30,15 @@ public class TelaVisualizaProfissionais extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recycleServicos);
 
-        ArrayList<UsuarioMarido> serv = null;
+        ArrayList<UsuarioMarido> maridos = null;
         try {
-            serv = bd.listaTodosProfissionais();
+            maridos = bd.listaTodosProfissionais();
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adpt = new AdaptadorProfissionais(this, serv);
+        adpt = new AdaptadorProfissionais(this, maridos);
         recyclerView.setAdapter(adpt);
 
     }

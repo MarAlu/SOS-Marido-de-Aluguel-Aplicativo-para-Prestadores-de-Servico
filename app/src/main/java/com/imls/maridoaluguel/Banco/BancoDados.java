@@ -5,11 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.hardware.Camera;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
+import com.imls.maridoaluguel.Business.VerificaLogin;
 import com.imls.maridoaluguel.Business.Visualizacao;
 import com.imls.maridoaluguel.Enum.Areas;
 import com.imls.maridoaluguel.Enum.StatusServico;
@@ -18,18 +15,11 @@ import com.imls.maridoaluguel.Enum.TipoServico;
 import com.imls.maridoaluguel.Enum.TipoUsuario;
 import com.imls.maridoaluguel.Form.Servico;
 import com.imls.maridoaluguel.Form.Usuario;
-import com.imls.maridoaluguel.Business.VerificaLogin;
 import com.imls.maridoaluguel.Form.UsuarioDomestico;
 import com.imls.maridoaluguel.Form.UsuarioMarido;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-
-import static com.imls.maridoaluguel.Enum.StatusServico.ABERTO;
 
 public class BancoDados extends SQLiteOpenHelper {
 
@@ -1054,13 +1044,12 @@ public class BancoDados extends SQLiteOpenHelper {
     }
 
     //LISTAR TODOS OS SERVIÇOS ABERTOS
-    public ArrayList<Servico> listaServicosAbertos() throws ParseException {
+    public ArrayList<Servico> listaServicosAbertos(int idMar) throws ParseException {
 
         ArrayList<Servico> listaServicos = new ArrayList<Servico>();
         SQLiteDatabase db = this.getWritableDatabase();
 
-        String query = "select * from " + tabela_servico +" where "+ col_status_serv +" = 'ABERTO'";
-
+        String query = "select * from " + tabela_servico +" where ("+ col_status_serv +" = 'ABERTO' and "+ col_tipo_servico +" = 'LIVRE') or ("+ col_codigo_mar_in_serv +" = "+ idMar +" and "+ col_status_serv +" != 'RECUSADO' and "+ col_status_serv +" != 'CANCELADO')";
         Cursor cursor = db.rawQuery(query, null);
 
         if (cursor.moveToFirst()) {
@@ -1086,12 +1075,12 @@ public class BancoDados extends SQLiteOpenHelper {
     }
 
     //LISTAR TODOS OS SERVIÇOS ABERTOS SEM MEUS
-    public ArrayList<Servico> listaServicosAbertosSemMeus(int idDom) throws ParseException {
+    public ArrayList<Servico> listaServicosAbertosSemMeus(int idDom, int idMar) throws ParseException {
 
         ArrayList<Servico> listaServicos = new ArrayList<Servico>();
         SQLiteDatabase db = this.getWritableDatabase();
 
-        String query = "select * from " + tabela_servico +" where "+ col_status_serv +" = 'ABERTO' and "+ col_codigo_dom_in_serv +" != "+ idDom;
+        String query = "select * from " + tabela_servico +" where ("+ col_status_serv +" = 'ABERTO' and "+ col_codigo_dom_in_serv +" != "+ idDom +") or ("+ col_codigo_mar_in_serv +" = "+ idMar +" and "+ col_status_serv +" != 'RECUSADO' and "+ col_status_serv +" != 'CANCELADO')";
 
         Cursor cursor = db.rawQuery(query, null);
 
@@ -1147,6 +1136,34 @@ public class BancoDados extends SQLiteOpenHelper {
             while (cursor.moveToNext());
         }
         return listaServicos;
+    }
+
+    //LISTAR TODOS OS SERVIÇOS CADASTRADOS
+    public Servico buscaServicoPorCod(int cdServico) throws ParseException {
+
+        Servico servico = new Servico();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "select * from " + tabela_servico +" where "+ col_codigo_servico +" = "+ cdServico;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+
+            servico.setIdServico(Integer.parseInt(cursor.getString(0)));
+            servico.setStatusServico(StatusServico.valueOf(cursor.getString(1)));
+            servico.setIdDomestico(Integer.parseInt(cursor.getString(2)));
+            servico.setIdMarido(Integer.parseInt(cursor.getString(3)));
+            servico.setDescServico(cursor.getString(4));
+            servico.setNotaParaDomestico(Integer.parseInt(cursor.getString(5)));
+            servico.setNotaParaMarido(Integer.parseInt(cursor.getString(6)));
+            servico.setFoneDomestico(cursor.getString(7));
+            servico.setAreaServico(Areas.valueOf(cursor.getString(8)));
+            servico.setTipoServico(TipoServico.valueOf(cursor.getString(9)));
+
+        }
+        return servico;
     }
 
 

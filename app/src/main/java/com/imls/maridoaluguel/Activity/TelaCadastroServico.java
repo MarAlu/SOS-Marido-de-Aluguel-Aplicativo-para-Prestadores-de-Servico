@@ -46,7 +46,7 @@ public class TelaCadastroServico extends AppCompatActivity {
         userCompleto.setUserMarido(bd.buscarMaridoPorCdUser(userCompleto.getUser().getId()));
 
         //Botões
-        Button btnCriar = findViewById(R.id.btnCriarServicoTCS);
+        Button btnCriar = findViewById(R.id.btnAceitarServicoTCS);
         Button btnCancelar = findViewById(R.id.btnCancelarCriarServicoTCS);
 
         //Check Áreas

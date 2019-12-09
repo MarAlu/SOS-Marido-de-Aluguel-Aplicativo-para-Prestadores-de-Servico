@@ -36,6 +36,7 @@ public class TelaCadastroServicoDirecionado extends AppCompatActivity {
 
         //Instancia do usuario para receber do banco
         final UsuarioCompleto userCompleto = new UsuarioCompleto();
+        final UsuarioCompleto userCompletoMar = new UsuarioCompleto();
 
         //Pegando email de quem está logado
         Usuario usr = GerenciaInstanciaLogin.getInstance().getUsuario();
@@ -45,13 +46,13 @@ public class TelaCadastroServicoDirecionado extends AppCompatActivity {
         final String idMa = v.getStringExtra("idMarido");
 
 
-        //Populando Usuario Completo
+        //Populando Usuario logado Completo
         userCompleto.setUser(bd.buscarUsuarioPorEmail(usr.getEmail()));
         userCompleto.setUserDomestico(bd.buscarDomesticoPorCdUser(userCompleto.getUser().getId()));
         userCompleto.setUserMarido(bd.buscarMaridoPorCdUser(userCompleto.getUser().getId()));
 
         //Botões
-        Button btnCriar = findViewById(R.id.btnCriarServicoTCS);
+        Button btnCriar = findViewById(R.id.btnAceitarServicoTCS);
 
         //Check Áreas
         final CheckBox checkEletrica = findViewById(R.id.checkEletricaTCS);
@@ -110,76 +111,114 @@ public class TelaCadastroServicoDirecionado extends AppCompatActivity {
         foneContato.setText(fon.getText().toString());
         nomeMarido.setText(nomeMa);
 
+
+        userCompletoMar.setUserMarido(bd.buscarMaridoPorCdMarido(Integer.parseInt(idMa)));
+        userCompletoMar.setUser(bd.buscarUsuarioPorId(userCompletoMar.getUserMarido().getIdUsuario()));
+
+        userCompletoMar.setUserMarido(bd.buscarMaridoArea(userCompletoMar.getUserMarido().getIdMarido(), userCompletoMar.getUserMarido().getIdUsuario(),
+                userCompletoMar.getUserMarido().getDescHabilidade(), userCompletoMar.getUserMarido().getServicosRealizados(), userCompletoMar.getUserMarido().getAvaliacao()));
+
+
         checkAlvenaria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(checkAlvenaria.isChecked()) {
-                    checkEletrica.setChecked(false);
-                    checkEncanamento.setChecked(false);
-                    checkMarcenaria.setChecked(false);
-                    checkPintura.setChecked(false);
-                    checkOutros.setChecked(false);
-                }
+            if(userCompletoMar.getUserMarido().getAreaAlvenaria().name().equals("ALVENARIA")) {
+                checkAlvenaria.setChecked(true);
+
+                checkEletrica.setChecked(false);
+                checkEncanamento.setChecked(false);
+                checkMarcenaria.setChecked(false);
+                checkPintura.setChecked(false);
+                checkOutros.setChecked(false);
+            }
+            else {
+                checkAlvenaria.setChecked(false);
+            }
             }
         });
         checkEletrica.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(checkEletrica.isChecked()) {
-                    checkAlvenaria.setChecked(false);
-                    checkEncanamento.setChecked(false);
-                    checkMarcenaria.setChecked(false);
-                    checkPintura.setChecked(false);
-                    checkOutros.setChecked(false);
-                }
+            if(userCompletoMar.getUserMarido().getAreaEletrica().name().equals("ELETRICA")) {
+                checkEletrica.setChecked(true);
+
+                checkAlvenaria.setChecked(false);
+                checkEncanamento.setChecked(false);
+                checkMarcenaria.setChecked(false);
+                checkPintura.setChecked(false);
+                checkOutros.setChecked(false);
+            }
+            else {
+                checkEletrica.setChecked(false);
+            }
             }
         });
         checkEncanamento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(checkEncanamento.isChecked()) {
-                    checkEletrica.setChecked(false);
-                    checkAlvenaria.setChecked(false);
-                    checkMarcenaria.setChecked(false);
-                    checkPintura.setChecked(false);
-                    checkOutros.setChecked(false);
-                }
+            if(userCompletoMar.getUserMarido().getAreaEncanamento().name().equals("ENCANAMENTO")) {
+                checkEncanamento.setChecked(true);
+
+                checkEletrica.setChecked(false);
+                checkAlvenaria.setChecked(false);
+                checkMarcenaria.setChecked(false);
+                checkPintura.setChecked(false);
+                checkOutros.setChecked(false);
+            }
+            else {
+                checkEncanamento.setChecked(false);
+            }
             }
         });
         checkMarcenaria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(checkMarcenaria.isChecked()) {
-                    checkEletrica.setChecked(false);
-                    checkEncanamento.setChecked(false);
-                    checkAlvenaria.setChecked(false);
-                    checkPintura.setChecked(false);
-                    checkOutros.setChecked(false);
-                }
+            if(userCompletoMar.getUserMarido().getAreaMarcenaria().name().equals("MARCENARIA")) {
+                checkMarcenaria.setChecked(true);
+
+                checkEletrica.setChecked(false);
+                checkEncanamento.setChecked(false);
+                checkAlvenaria.setChecked(false);
+                checkPintura.setChecked(false);
+                checkOutros.setChecked(false);
+            }
+            else {
+                checkMarcenaria.setChecked(false);
+            }
             }
         });
         checkPintura.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(checkPintura.isChecked()) {
-                    checkEletrica.setChecked(false);
-                    checkEncanamento.setChecked(false);
-                    checkMarcenaria.setChecked(false);
-                    checkAlvenaria.setChecked(false);
-                    checkOutros.setChecked(false);
-                }
+            if(userCompletoMar.getUserMarido().getAreaPintura().name().equals("PINTURA")) {
+                checkPintura.setChecked(true);
+
+                checkEletrica.setChecked(false);
+                checkEncanamento.setChecked(false);
+                checkMarcenaria.setChecked(false);
+                checkAlvenaria.setChecked(false);
+                checkOutros.setChecked(false);
+            }
+            else {
+                checkPintura.setChecked(false);
+            }
             }
         });
         checkOutros.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(checkOutros.isChecked()) {
-                    checkEletrica.setChecked(false);
-                    checkEncanamento.setChecked(false);
-                    checkMarcenaria.setChecked(false);
-                    checkPintura.setChecked(false);
-                    checkAlvenaria.setChecked(false);
-                }
+            if(userCompletoMar.getUserMarido().getAreaOutros().name().equals("OUTROS")) {
+                checkOutros.setChecked(true);
+
+                checkEletrica.setChecked(false);
+                checkEncanamento.setChecked(false);
+                checkMarcenaria.setChecked(false);
+                checkPintura.setChecked(false);
+                checkAlvenaria.setChecked(false);
+            }
+            else {
+                checkOutros.setChecked(false);
+            }
             }
         });
 

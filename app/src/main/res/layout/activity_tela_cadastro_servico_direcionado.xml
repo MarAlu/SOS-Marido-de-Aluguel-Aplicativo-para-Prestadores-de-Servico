@@ -234,7 +234,7 @@
                 android:textColorHint="#000000" />
 
             <Button
-                android:id="@+id/btnCriarServicoTCS"
+                android:id="@+id/btnAceitarServicoTCS"
                 android:layout_width="161dp"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/textDescAtividadesTCS"

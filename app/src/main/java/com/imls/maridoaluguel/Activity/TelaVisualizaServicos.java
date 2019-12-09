@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.VideoView;
 
 import com.imls.maridoaluguel.Banco.BancoDados;
@@ -40,13 +42,14 @@ public class TelaVisualizaServicos extends AppCompatActivity {
         view = bd.buscaLogado();
 
         if(view.getTipo().equals("MARIDO")) {
+
             UsuarioMarido userMar = bd.buscarMaridoPorCdMarido(view.getId());
             UsuarioCompleto userComp = new UsuarioCompleto();
             userComp.setUser(bd.buscarUsuarioPorId(userMar.getIdUsuario()));
 
             if(userComp.getUser().getTipoUser().name().equals("MARIDO_ALUGUEL")) {
                 try {
-                    serv = bd.listaServicosAbertos();
+                    serv = bd.listaServicosAbertos(userMar.getIdMarido());
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -54,7 +57,7 @@ public class TelaVisualizaServicos extends AppCompatActivity {
             else {
                 userComp.setUserDomestico(bd.buscarDomesticoPorCdUser(userComp.getUser().getId()));
                 try {
-                    serv = bd.listaServicosAbertosSemMeus(userComp.getUserDomestico().getIdDomestico());
+                    serv = bd.listaServicosAbertosSemMeus(userComp.getUserDomestico().getIdDomestico(), userMar.getIdMarido());
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -62,6 +65,7 @@ public class TelaVisualizaServicos extends AppCompatActivity {
             }
         }
         else {
+
             UsuarioDomestico userDom = bd.buscarDomesticoPorCdDomestico(view.getId());
             UsuarioCompleto userComp = new UsuarioCompleto();
             userComp.setUser(bd.buscarUsuarioPorId(userDom.getIdUsuario()));

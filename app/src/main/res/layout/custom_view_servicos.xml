@@ -35,15 +35,16 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/viewNomeTVS"
                 android:layout_width="0dp"
                 android:layout_height="26dp"
                 android:layout_marginTop="4dp"
-                android:text="NOME"
                 android:gravity="center"
+                android:text="NOME"
                 android:textColor="#000000"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/viewNotaTVS"
@@ -81,6 +82,19 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/viewNomeTVS"
                 app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/viewTipoServTVS"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="6dp"
+                android:gravity="center"
+                android:text="TIPO SERVIÇO"
+                android:textColor="#000000"
+                app:layout_constraintBottom_toTopOf="@+id/viewNotaTVS"
+                app:layout_constraintEnd_toStartOf="@+id/viewNomeTVS"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

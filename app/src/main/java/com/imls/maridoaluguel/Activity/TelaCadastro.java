@@ -396,15 +396,15 @@ public class TelaCadastro extends AppCompatActivity {
 
                                                                         idUser = bd.pesquisaPorEmail(email.getText().toString());
 
-                                                                        System.out.println(idUser);
                                                                         if(idUser != 0) {
                                                                             //Caso seja Marido e Domestico
                                                                             if(user.getTipoUser().name().equals("DOMESTICO_E_MARIDO")) {
                                                                                 //Tendo o id, cadastra usuario domestico
                                                                                 if(bd.addDomestico(idUser)) {
+
                                                                                     if(bd.addMarido(idUser, descricaoAtivi.getText().toString())) {
                                                                                         int idMarido = bd.pesquisaIdMaridoPorCodigo(idUser);
-
+                                                                                        System.out.println(idMarido);
 
                                                                                         if(checkAlvenaria.isChecked()) {
                                                                                             bd.addAreaMarido(idMarido, Areas.ALVENARIA);

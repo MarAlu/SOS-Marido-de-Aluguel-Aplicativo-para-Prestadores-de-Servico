@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class BancoDados extends SQLiteOpenHelper {
 
     private static final int vesao_banco = 1;
-    private static final String banco_sosmaridodealuguel = "bd_ma";
+    private static final String banco_sosmaridodealuguel = "bd_masq";
 
     //TABELAS
     private static final String tabela_usuario = "tb_user";
@@ -652,8 +652,8 @@ public class BancoDados extends SQLiteOpenHelper {
         try {
             values.put(col_codigo_in_mar, idUser);
             values.put(col_habilidade, descHab);
-            values.put(col_servicos_rel, "0");
-            values.put(col_avaliacao_mar, "0.0");
+            values.put(col_servicos_rel, 0);
+            values.put(col_avaliacao_mar, 0);
 
             db.insert(tabela_marido, null, values);
             db.close();
@@ -865,6 +865,41 @@ public class BancoDados extends SQLiteOpenHelper {
         return listaProfissionais;
     }
 
+    //LISTAR TODOS OS PROFISSIONAIS CADASTRADOS
+    public ArrayList<UsuarioMarido> listaTodosProfissionaisMenosEu(int idMar) throws ParseException {
+
+        ArrayList<UsuarioMarido> listaProfissionais = new ArrayList<UsuarioMarido>();
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "select * from " + tabela_marido +" where "+ col_codigo_mar +" != "+ idMar;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                UsuarioMarido userMar = new UsuarioMarido();
+
+                userMar.setIdMarido(Integer.parseInt(cursor.getString(0)));
+                userMar.setIdUsuario(Integer.parseInt(cursor.getString(1)));
+                userMar.setDescHabilidade(cursor.getString(2));
+                userMar.setServicosRealizados(Integer.parseInt(cursor.getString(3)));
+                userMar.setAvaliacao(Float.parseFloat(cursor.getString(4)));
+                userMar.setAreaEletrica(Areas.A);
+                userMar.setAreaEncanamento(Areas.A);
+                userMar.setAreaPintura(Areas.A);
+                userMar.setAreaAlvenaria(Areas.A);
+                userMar.setAreaMarcenaria(Areas.A);
+                userMar.setAreaOutros(Areas.A);
+
+                userMar = buscarMaridoArea(userMar.getIdMarido(), userMar.getIdUsuario(),userMar.getDescHabilidade(),userMar.getServicosRealizados(), userMar.getAvaliacao());
+
+                listaProfissionais.add(userMar);
+            }
+            while (cursor.moveToNext());
+        }
+        return listaProfissionais;
+    }
+
     //PESQUISA NOME COM ID DOMESTICO
     public String buscaNomePorIdMarido(int idMar) throws ParseException {
 
@@ -960,13 +995,34 @@ public class BancoDados extends SQLiteOpenHelper {
     }
 
     //ACEITE SERVICO
-    public Boolean aceiteServico(Servico servico) {
+    public Boolean aceiteServico(Servico servico, String status) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         try {
-            values.put(col_status_serv, servico.getStatusServico().name());
+            values.put(col_status_serv, status);
             values.put(col_codigo_mar_in_serv, servico.getIdMarido());
+
+            db.update(tabela_servico, values, col_codigo_servico + " = ?", new String[]{String.valueOf(servico.getIdServico())});
+            db.close();
+
+            return true;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        db.close();
+        return false;
+    }
+
+    //ACEITE SERVICO
+    public Boolean cancelaServico(Servico servico, String status) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        try {
+            values.put(col_status_serv, status);
 
             db.update(tabela_servico, values, col_codigo_servico + " = ?", new String[]{String.valueOf(servico.getIdServico())});
             db.close();

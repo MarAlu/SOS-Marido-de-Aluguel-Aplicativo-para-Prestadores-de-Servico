@@ -34,7 +34,7 @@ import static com.imls.maridoaluguel.Enum.StatusServico.ABERTO;
 public class BancoDados extends SQLiteOpenHelper {
 
     private static final int vesao_banco = 1;
-    private static final String banco_sosmaridodealuguel = "bd_maridoss";
+    private static final String banco_sosmaridodealuguel = "bd_ma";
 
     //TABELAS
     private static final String tabela_usuario = "tb_user";
@@ -132,7 +132,6 @@ public class BancoDados extends SQLiteOpenHelper {
 
         System.out.println("CRIOU TABELAS");
 
-        db.close();
     }
 
     @Override

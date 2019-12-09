@@ -34,7 +34,7 @@ public class TelaInicial extends AppCompatActivity {
 
         view = bd.buscaLogado();
 
-        if(view.getEmail().equals("reset")) {
+        if(view.getEmail().equals("reset2020")) {
             bd.dropBanco();
         }
 

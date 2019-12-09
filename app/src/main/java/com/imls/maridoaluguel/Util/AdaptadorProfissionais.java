@@ -61,9 +61,9 @@ public class AdaptadorProfissionais extends RecyclerView.Adapter<AdaptadorProfis
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            nome = itemView.findViewById(R.id.viewNomeTVP);
-            desc = itemView.findViewById(R.id.viewDescTVP);
-            nota = itemView.findViewById(R.id.viewNotaTVP);
+            nome = itemView.findViewById(R.id.viewNomeTVS);
+            desc = itemView.findViewById(R.id.viewDescTVS);
+            nota = itemView.findViewById(R.id.viewNotaTVS);
         }
     }
 

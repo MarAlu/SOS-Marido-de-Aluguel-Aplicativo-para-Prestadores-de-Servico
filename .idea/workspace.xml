@@ -13,33 +13,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80c1af2b-5a85-47bf-b3b2-a185005ebb8e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaCadastroServicoDirecionado.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaVisualizaProfissional.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaVisualizaServico.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_cadastro_servico_direcionado.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_visualiza_profissional.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_visualiza_servico.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaPerfil.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaPerfil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaVisualizaProfissionais.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaVisualizaProfissionais.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaCadastroServicoDirecionado.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaCadastroServicoDirecionado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaVisualizaProfissional.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaVisualizaProfissional.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaVisualizaServico.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaVisualizaServico.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaVisualizaServicos.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaVisualizaServicos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Banco/BancoDados.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Banco/BancoDados.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Util/AdaptadorProfissionais.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Util/AdaptadorProfissionais.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Util/AdaptadorServico.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Util/AdaptadorServico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_cadastro.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_cadastro.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_cadastro_servico.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_cadastro_servico.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_edit_perfil.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_edit_perfil.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_perfil.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_perfil.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_cadastro_servico_direcionado.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_cadastro_servico_direcionado.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,61 +51,79 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaVisualizaServico.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaVisualizaServicos.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="430">
+              <caret line="79" column="20" selection-start-line="79" selection-start-column="20" selection-end-line="79" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Banco/BancoDados.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="1125" column="106" lean-forward="true" selection-start-line="1125" selection-start-column="106" selection-end-line="1125" selection-end-column="106" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tela_cadastro_servico_direcionado.xml">
-          <provider selected="true" editor-type-id="android-designer2" />
-          <provider editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaPerfil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="334">
+              <caret line="36" column="19" lean-forward="true" selection-start-line="36" selection-start-column="19" selection-end-line="37" selection-end-column="72" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaCadastroServicoDirecionado.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaInicial.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="32" column="15" lean-forward="true" selection-start-line="32" selection-start-column="8" selection-end-line="34" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaVisualizaServico.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="18" column="58" lean-forward="true" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tela_visualiza_servico.xml">
+          <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Util/AdaptadorProfissionais.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaCadastroServicoDirecionado.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="51" column="37" selection-start-line="51" selection-start-column="37" selection-end-line="51" selection-end-column="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1867#1868#0" expanded="true" />
-                <element signature="e#1902#1903#0" expanded="true" />
-                <element signature="e#2126#2580#0" expanded="true" />
-                <element signature="e#2579#2580#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="170">
+              <caret line="218" column="68" selection-start-line="218" selection-start-column="68" selection-end-line="218" selection-end-column="68" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaVisualizaProfissionais.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaCadastroServico.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="34" column="46" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Banco/BancoDados.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="878" column="38" selection-start-line="878" selection-start-column="18" selection-end-line="878" selection-end-column="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="85">
+              <caret line="28" column="4" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -126,7 +131,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Util/AdaptadorServico.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
+            <state relative-caret-position="-159">
               <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -146,31 +151,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaVisualizaProfissional.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="165" column="81" selection-start-line="165" selection-start-column="81" selection-end-line="165" selection-end-column="81" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaPerfil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1460">
-              <caret line="221" column="12" lean-forward="true" selection-start-line="221" selection-start-column="12" selection-end-line="221" selection-end-column="85" />
+            <state relative-caret-position="253">
+              <caret line="176" column="46" lean-forward="true" selection-start-line="176" selection-start-column="46" selection-end-line="176" selection-end-column="46" />
               <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaEditPerfil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9702">
-              <caret line="752" column="88" selection-start-line="752" selection-start-column="88" selection-end-line="752" selection-end-column="88" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#7657#8054#0" expanded="true" />
+                <element signature="e#8053#8054#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -252,22 +237,24 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Form/UsuarioDomestico.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_inicial.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_visualiza_profissionais.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaVisualizaServicos.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaInicial.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_view_profissionais.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_view_servicos.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_edit_perfil.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_cadastro_servico.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_cadastro.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_perfil.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_visualiza_profissional.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaVisualizaProfissional.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Banco/BancoDados.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Util/AdaptadorProfissionais.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Util/AdaptadorServico.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaVisualizaProfissionais.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_cadastro_servico.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_cadastro_servico_direcionado.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaVisualizaProfissional.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaVisualizaServico.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaCadastroServicoDirecionado.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaVisualizaServicos.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Banco/BancoDados.java" />
       </list>
     </option>
   </component>
@@ -498,14 +485,14 @@
       <window_info id="Resources Explorer" order="7" sideWeight="0.49905482" weight="0.32969153" />
       <window_info id="Capture Tool" order="8" />
       <window_info id="simpleUML" order="9" sideWeight="0.49338374" weight="0.6580977" />
-      <window_info anchor="bottom" id="Run" order="0" sideWeight="0.49807197" weight="0.28802153" />
+      <window_info anchor="bottom" id="Run" order="0" sideWeight="0.49807197" visible="true" weight="0.28802153" />
       <window_info anchor="bottom" id="Logcat" order="1" weight="0.32974428" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.32974428" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.32974428" />
       <window_info anchor="bottom" id="Terminal" order="4" />
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50192803" side_tool="true" weight="0.28802153" />
       <window_info anchor="bottom" id="Version Control" order="6" />
-      <window_info anchor="bottom" id="Build" order="7" visible="true" weight="0.27860028" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.27860028" />
       <window_info anchor="bottom" id="Find" order="8" />
       <window_info anchor="bottom" id="Android Profiler" order="9" />
       <window_info anchor="right" id="Assistant" order="0" weight="0.32969153" />
@@ -596,19 +583,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaCadastroServico.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="213" selection-start-line="213" selection-end-line="213" />
-          <folding>
-            <element signature="e#7335#7589#0" expanded="true" />
-            <element signature="e#7588#7589#0" expanded="true" />
-            <element signature="e#7629#10737#0" expanded="true" />
-            <element signature="e#10736#10737#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -762,33 +736,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaInicial.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="36" column="49" selection-start-line="36" selection-start-column="49" selection-end-line="36" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7313#7852#0" expanded="true" />
-            <element signature="e#7851#7852#0" expanded="true" />
-            <element signature="e#8163#9081#0" expanded="true" />
-            <element signature="e#9080#9081#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Util/OnItemClickListener.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaVisualizaServicosFragment.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaVisualizaServicos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tela_visualiza_servico.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/custom_view_profissionais.xml">
       <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor">
@@ -837,65 +786,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tela_cadastro_servico.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="90" column="40" selection-start-line="90" selection-start-column="40" selection-end-line="90" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaPerfil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1460">
-          <caret line="221" column="12" lean-forward="true" selection-start-line="221" selection-start-column="12" selection-end-line="221" selection-end-column="85" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaEditPerfil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9702">
           <caret line="752" column="88" selection-start-line="752" selection-start-column="88" selection-end-line="752" selection-end-column="88" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaVisualizaProfissional.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="165" column="81" selection-start-line="165" selection-start-column="81" selection-end-line="165" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Banco/BancoDados.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="878" column="38" selection-start-line="878" selection-start-column="18" selection-end-line="878" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Util/AdaptadorServico.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2098#2099#0" expanded="true" />
-            <element signature="e#2133#2134#0" expanded="true" />
-            <element signature="e#2371#2828#0" expanded="true" />
-            <element signature="e#2827#2828#0" expanded="true" />
-            <element signature="e#3193#3194#0" expanded="true" />
-            <element signature="e#3228#3229#0" expanded="true" />
-            <element signature="e#3270#3271#0" expanded="true" />
-            <element signature="e#3305#3306#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -924,19 +820,112 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tela_cadastro_servico_direcionado.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="4692">
+          <caret line="276" column="17" selection-start-line="16" selection-start-column="8" selection-end-line="276" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tela_cadastro_servico.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="14" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Util/AdaptadorServico.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-159">
+          <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2098#2099#0" expanded="true" />
+            <element signature="e#2133#2134#0" expanded="true" />
+            <element signature="e#2371#2828#0" expanded="true" />
+            <element signature="e#2827#2828#0" expanded="true" />
+            <element signature="e#3193#3194#0" expanded="true" />
+            <element signature="e#3228#3229#0" expanded="true" />
+            <element signature="e#3270#3271#0" expanded="true" />
+            <element signature="e#3305#3306#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaVisualizaServico.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="221">
+          <caret line="18" column="58" lean-forward="true" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaCadastroServico.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="28" column="4" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaVisualizaProfissional.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="176" column="46" lean-forward="true" selection-start-line="176" selection-start-column="46" selection-end-line="176" selection-end-column="46" />
+          <folding>
+            <element signature="e#7657#8054#0" expanded="true" />
+            <element signature="e#8053#8054#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaCadastroServicoDirecionado.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="218" column="68" selection-start-line="218" selection-start-column="68" selection-end-line="218" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tela_visualiza_servico.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tela_cadastro_servico_direcionado.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaPerfil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="36" column="19" lean-forward="true" selection-start-line="36" selection-start-column="19" selection-end-line="37" selection-end-column="72" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaInicial.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="32" column="15" lean-forward="true" selection-start-line="32" selection-start-column="8" selection-end-line="34" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Activity/TelaVisualizaServicos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="79" column="20" selection-start-line="79" selection-start-column="20" selection-end-line="79" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/imls/maridoaluguel/Banco/BancoDados.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="1125" column="106" lean-forward="true" selection-start-line="1125" selection-start-column="106" selection-end-line="1125" selection-end-column="106" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

@@ -1053,6 +1053,102 @@ public class BancoDados extends SQLiteOpenHelper {
         return listaServicos;
     }
 
+    //LISTAR TODOS OS SERVIÇOS ABERTOS
+    public ArrayList<Servico> listaServicosAbertos() throws ParseException {
+
+        ArrayList<Servico> listaServicos = new ArrayList<Servico>();
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "select * from " + tabela_servico +" where "+ col_status_serv +" = 'ABERTO'";
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Servico serv = new Servico();
+
+                serv.setIdServico(Integer.parseInt(cursor.getString(0)));
+                serv.setStatusServico(StatusServico.valueOf(cursor.getString(1)));
+                serv.setIdDomestico(Integer.parseInt(cursor.getString(2)));
+                serv.setIdMarido(Integer.parseInt(cursor.getString(3)));
+                serv.setDescServico(cursor.getString(4));
+                serv.setNotaParaDomestico(Integer.parseInt(cursor.getString(5)));
+                serv.setNotaParaMarido(Integer.parseInt(cursor.getString(6)));
+                serv.setFoneDomestico(cursor.getString(7));
+                serv.setAreaServico(Areas.valueOf(cursor.getString(8)));
+                serv.setTipoServico(TipoServico.valueOf(cursor.getString(9)));
+
+                listaServicos.add(serv);
+            }
+            while (cursor.moveToNext());
+        }
+        return listaServicos;
+    }
+
+    //LISTAR TODOS OS SERVIÇOS ABERTOS SEM MEUS
+    public ArrayList<Servico> listaServicosAbertosSemMeus(int idDom) throws ParseException {
+
+        ArrayList<Servico> listaServicos = new ArrayList<Servico>();
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "select * from " + tabela_servico +" where "+ col_status_serv +" = 'ABERTO' and "+ col_codigo_dom_in_serv +" != "+ idDom;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Servico serv = new Servico();
+
+                serv.setIdServico(Integer.parseInt(cursor.getString(0)));
+                serv.setStatusServico(StatusServico.valueOf(cursor.getString(1)));
+                serv.setIdDomestico(Integer.parseInt(cursor.getString(2)));
+                serv.setIdMarido(Integer.parseInt(cursor.getString(3)));
+                serv.setDescServico(cursor.getString(4));
+                serv.setNotaParaDomestico(Integer.parseInt(cursor.getString(5)));
+                serv.setNotaParaMarido(Integer.parseInt(cursor.getString(6)));
+                serv.setFoneDomestico(cursor.getString(7));
+                serv.setAreaServico(Areas.valueOf(cursor.getString(8)));
+                serv.setTipoServico(TipoServico.valueOf(cursor.getString(9)));
+
+                listaServicos.add(serv);
+            }
+            while (cursor.moveToNext());
+        }
+        return listaServicos;
+    }
+
+    //LISTAR TODOS OS SERVIÇOS MEUS
+    public ArrayList<Servico> listaServicosMeus(int idDom) throws ParseException {
+
+        ArrayList<Servico> listaServicos = new ArrayList<Servico>();
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "select * from " + tabela_servico +" where "+ col_codigo_dom_in_serv +" = "+ idDom;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Servico serv = new Servico();
+
+                serv.setIdServico(Integer.parseInt(cursor.getString(0)));
+                serv.setStatusServico(StatusServico.valueOf(cursor.getString(1)));
+                serv.setIdDomestico(Integer.parseInt(cursor.getString(2)));
+                serv.setIdMarido(Integer.parseInt(cursor.getString(3)));
+                serv.setDescServico(cursor.getString(4));
+                serv.setNotaParaDomestico(Integer.parseInt(cursor.getString(5)));
+                serv.setNotaParaMarido(Integer.parseInt(cursor.getString(6)));
+                serv.setFoneDomestico(cursor.getString(7));
+                serv.setAreaServico(Areas.valueOf(cursor.getString(8)));
+                serv.setTipoServico(TipoServico.valueOf(cursor.getString(9)));
+
+                listaServicos.add(serv);
+            }
+            while (cursor.moveToNext());
+        }
+        return listaServicos;
+    }
+
 
 
 

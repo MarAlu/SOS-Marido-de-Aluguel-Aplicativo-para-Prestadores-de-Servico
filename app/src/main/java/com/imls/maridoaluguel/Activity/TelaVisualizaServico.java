@@ -16,5 +16,6 @@ public class TelaVisualizaServico extends AppCompatActivity {
 
         Intent i = getIntent();
 
+        System.out.println(i.getStringExtra("idServico"));
     }
 }

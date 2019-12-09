@@ -165,6 +165,19 @@ public class TelaVisualizaProfissional extends AppCompatActivity {
         cidade.setText(userCompleto.getUser().getCidade());
         descricaoAtivi.setText(userCompleto.getUserMarido().getDescHabilidade());
 
+        btnCadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Integer idMa = userCompleto.getUserMarido().getIdMarido();
+
+                Intent telaServicoDir = new Intent(TelaVisualizaProfissional.this, TelaCadastroServicoDirecionado.class);
+
+                telaServicoDir.putExtra("nomeMarido", userCompleto.getUser().getNome());
+                telaServicoDir.putExtra("idMarido", idMa.toString());
+                startActivity(telaServicoDir);
+            }
+        });
+
 
     }
 }

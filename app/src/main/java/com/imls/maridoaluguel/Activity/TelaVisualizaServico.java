@@ -39,7 +39,17 @@ public class TelaVisualizaServico extends AppCompatActivity {
         final Visualizacao view;
 
         view = bd.buscaLogado();
+        final int idMaridoW;
+        final int idDomesticoW;
 
+        if(view.getTipo().equals("MARIDO")) {
+            idMaridoW = view.getId();
+            idDomesticoW = 0;
+        }
+        else {
+            idDomesticoW = view.getId();
+            idMaridoW = 0;
+        }
         //Instancia do usuario para receber do banco
         final UsuarioCompleto userCompletoDom = new UsuarioCompleto();
         final UsuarioCompleto userCompletoMar = new UsuarioCompleto();
@@ -59,7 +69,7 @@ public class TelaVisualizaServico extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        if(serv.getIdMarido() != 0) {
+        if(idMaridoW != 0) {
             userCompletoMar.setUserMarido(bd.buscarMaridoPorCdMarido(serv.getIdMarido()));
             userCompletoMar.setUser(bd.buscarUsuarioPorId(userCompletoMar.getUserMarido().getIdUsuario()));
         }
@@ -212,7 +222,7 @@ public class TelaVisualizaServico extends AppCompatActivity {
         if(view.getTipo().equals("MARIDO")) {
 
             //SE SERVICO LIVRE SEM MARIDO
-            if(serv.getIdMarido() == 0) {
+            if(idMaridoW == 0) {
 
                 foneContato.setVisibility(View.INVISIBLE);
 
@@ -222,7 +232,7 @@ public class TelaVisualizaServico extends AppCompatActivity {
                 btnCancelar.setVisibility(View.GONE);
             }
 
-            if(serv.getIdMarido() == view.getId() && (serv.getStatusServico().name().equals("ACEITO"))) {
+            if(idMaridoW == view.getId() && (serv.getStatusServico().name().equals("ACEITO"))) {
                 foneContato.setVisibility(View.VISIBLE);
 
                 btnAceitar.setVisibility(View.GONE);
@@ -232,7 +242,7 @@ public class TelaVisualizaServico extends AppCompatActivity {
             }
 
             //SE SERVICO DIREECIONADO ABERTO - ACEITAR/RECUSAR (SEM VER TELEFONE
-            if(serv.getIdMarido() == view.getId() && (serv.getStatusServico().name().equals("ABERTO"))) {
+            if(idMaridoW == view.getId() && (serv.getStatusServico().name().equals("ABERTO"))) {
 
                 foneContato.setVisibility(View.INVISIBLE);
 
@@ -258,7 +268,7 @@ public class TelaVisualizaServico extends AppCompatActivity {
 
         descricaoAtivi.setText(serv.getDescServico());
 
-        if(serv.getIdMarido() != 0) {
+        if(idMaridoW != 0) {
             nomeMarido.setText(userCompletoMar.getUser().getNome());
 
         }
@@ -276,7 +286,7 @@ public class TelaVisualizaServico extends AppCompatActivity {
                     servi.setIdMarido(0);
                 }
                 else {
-                    servi.setIdMarido(userCompletoMar.getUserMarido().getIdMarido());
+                    servi.setIdMarido(idMaridoW);
                 }
                 servi.setDescServico(finalServ1.getDescServico());
                 servi.setTipoServico(finalServ1.getTipoServico());
@@ -313,6 +323,40 @@ public class TelaVisualizaServico extends AppCompatActivity {
                 servi.setFoneDomestico(finalServ1.getFoneDomestico());
 
                 bd.cancelaServico(servi, "CANCELADO");
+
+                Intent telaInicio = new Intent(TelaVisualizaServico.this, TelaInicial.class);
+                startActivity(telaInicio);
+            }
+        });
+
+        btnRecusar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Servico servi = new Servico();
+
+                servi.setIdServico(finalServ1.getIdServico());
+                servi.setAreaServico(finalServ1.getAreaServico());
+                servi.setIdDomestico(finalServ1.getIdDomestico());
+                if(finalServ1.getIdMarido() == 0) {
+                    servi.setIdMarido(0);
+                }
+                else {
+                    servi.setIdMarido(userCompletoMar.getUserMarido().getIdMarido());
+                }
+
+                servi.setDescServico(finalServ1.getDescServico());
+                servi.setTipoServico(finalServ1.getTipoServico());
+                servi.setNotaParaDomestico(finalServ1.getNotaParaDomestico());
+                servi.setNotaParaMarido(finalServ1.getNotaParaMarido());
+                servi.setFoneDomestico(finalServ1.getFoneDomestico());
+
+                if(servi.getTipoServico().name().equals("LIVRE")) {
+                    servi.setIdMarido(0);
+                    bd.cancelaServico(servi, "ABERTO");
+                }
+                else {
+                    bd.cancelaServico(servi, "RECUSADO");
+                }
 
                 Intent telaInicio = new Intent(TelaVisualizaServico.this, TelaInicial.class);
                 startActivity(telaInicio);

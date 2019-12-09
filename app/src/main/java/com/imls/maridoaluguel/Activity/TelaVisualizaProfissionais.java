@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.imls.maridoaluguel.Banco.BancoDados;
@@ -33,37 +34,54 @@ public class TelaVisualizaProfissionais extends AppCompatActivity {
 
         final Visualizacao view;
 
-        view = bd.buscaLogado();
+        Intent busca = getIntent();
         ArrayList<UsuarioMarido> maridos = null;
 
-        if(view.getTipo().equals("MARIDO")) {
+        String caixaP = "";
+        if(busca.getStringExtra("caixaP").length() > 0) {
+            caixaP = busca.getStringExtra("caixaP");
 
-            UsuarioMarido userMar = bd.buscarMaridoPorCdMarido(view.getId());
-            UsuarioCompleto userComp = new UsuarioCompleto();
-            userComp.setUser(bd.buscarUsuarioPorId(userMar.getIdUsuario()));
+            try {
+                maridos = bd.buscaProfissaPesquisa(caixaP);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
         else {
-            UsuarioDomestico userDom = bd.buscarDomesticoPorCdDomestico(view.getId());
-            UsuarioCompleto userComp = new UsuarioCompleto();
-            userComp.setUser(bd.buscarUsuarioPorId(userDom.getIdUsuario()));
-            UsuarioMarido userM = bd.buscarMaridoPorCdUser(userComp.getUser().getId());
+            view = bd.buscaLogado();
 
-            if(userComp.getUser().getTipoUser().equals("DOMESTICO")) {
-                try {
-                    maridos = bd.listaTodosProfissionais();
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+
+            if(view.getTipo().equals("MARIDO")) {
+
+                UsuarioMarido userMar = bd.buscarMaridoPorCdMarido(view.getId());
+                UsuarioCompleto userComp = new UsuarioCompleto();
+                userComp.setUser(bd.buscarUsuarioPorId(userMar.getIdUsuario()));
             }
             else {
+                UsuarioDomestico userDom = bd.buscarDomesticoPorCdDomestico(view.getId());
+                UsuarioCompleto userComp = new UsuarioCompleto();
+                userComp.setUser(bd.buscarUsuarioPorId(userDom.getIdUsuario()));
+                UsuarioMarido userM = bd.buscarMaridoPorCdUser(userComp.getUser().getId());
 
-                try {
-                    maridos = bd.listaTodosProfissionaisMenosEu(userM.getIdMarido());
-                } catch (ParseException e) {
-                    e.printStackTrace();
+                if(userComp.getUser().getTipoUser().equals("DOMESTICO")) {
+                    try {
+                        maridos = bd.listaTodosProfissionais();
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                }
+                else {
+
+                    try {
+                        maridos = bd.listaTodosProfissionaisMenosEu(userM.getIdMarido());
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
+
+
 
         recyclerView = findViewById(R.id.recycleServicos);
 

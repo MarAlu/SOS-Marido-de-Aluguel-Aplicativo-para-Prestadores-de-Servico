@@ -948,6 +948,40 @@ public class BancoDados extends SQLiteOpenHelper {
         return qtd;
     }
 
+    //BUSCA MARIDO POR CAIXA PESQUISA
+    public ArrayList<UsuarioMarido> buscaProfissaPesquisa(String pesq) throws ParseException {
+
+        ArrayList<UsuarioMarido> listaProfissionais = new ArrayList<UsuarioMarido>();
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "select * from " + tabela_marido +" where "+ col_habilidade +" like '%"+ pesq +"%'";
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                UsuarioMarido userMar = new UsuarioMarido();
+
+                userMar.setIdMarido(Integer.parseInt(cursor.getString(0)));
+                userMar.setIdUsuario(Integer.parseInt(cursor.getString(1)));
+                userMar.setDescHabilidade(cursor.getString(2));
+                userMar.setServicosRealizados(Integer.parseInt(cursor.getString(3)));
+                userMar.setAvaliacao(Float.parseFloat(cursor.getString(4)));
+                userMar.setAreaEletrica(Areas.A);
+                userMar.setAreaEncanamento(Areas.A);
+                userMar.setAreaPintura(Areas.A);
+                userMar.setAreaAlvenaria(Areas.A);
+                userMar.setAreaMarcenaria(Areas.A);
+                userMar.setAreaOutros(Areas.A);
+
+                userMar = buscarMaridoArea(userMar.getIdMarido(), userMar.getIdUsuario(),userMar.getDescHabilidade(),userMar.getServicosRealizados(), userMar.getAvaliacao());
+
+                listaProfissionais.add(userMar);
+            }
+            while (cursor.moveToNext());
+        }
+        return listaProfissionais;
+    }
 
 
 
@@ -1038,19 +1072,13 @@ public class BancoDados extends SQLiteOpenHelper {
     }
 
     //RECUSA SERVICO
-    public Boolean recusaServico(Servico servico) {
+    public Boolean recusaServico(Servico servico, String status) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         try {
-            values.put(col_status_serv, servico.getStatusServico().name());
-            values.put(col_codigo_dom_in_serv, servico.getIdDomestico());
+            values.put(col_status_serv, status);
             values.put(col_codigo_mar_in_serv, servico.getIdMarido());
-            values.put(col_descricao_serv, servico.getDescServico());
-            values.put(col_avaliacao_serv_dom, 0);
-            values.put(col_avaliacao_serv_mar, 0);
-            values.put(col_fone_domestico, servico.getFoneDomestico());
-            values.put(col_area, servico.getAreaServico().name());
 
             db.update(tabela_servico, values, col_codigo_servico + " = ?", new String[]{String.valueOf(servico.getIdServico())});
             db.close();

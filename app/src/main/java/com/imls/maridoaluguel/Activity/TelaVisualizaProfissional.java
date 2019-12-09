@@ -1,6 +1,8 @@
 package com.imls.maridoaluguel.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,9 +16,16 @@ import android.widget.TextView;
 import com.imls.maridoaluguel.Banco.BancoDados;
 import com.imls.maridoaluguel.Enum.Areas;
 import com.imls.maridoaluguel.Form.UsuarioCompleto;
+import com.imls.maridoaluguel.Form.UsuarioMarido;
 import com.imls.maridoaluguel.R;
+import com.imls.maridoaluguel.Util.AdaptadorProfissionais;
+import com.imls.maridoaluguel.Util.AdaptadorServico;
+
+import java.text.ParseException;
+import java.util.ArrayList;
 
 public class TelaVisualizaProfissional extends AppCompatActivity {
+
 
     BancoDados bd = new BancoDados(this);
 

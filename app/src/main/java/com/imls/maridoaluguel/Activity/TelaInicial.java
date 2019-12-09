@@ -2,11 +2,14 @@ package com.imls.maridoaluguel.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -14,11 +17,19 @@ import android.widget.TextView;
 import com.imls.maridoaluguel.Banco.BancoDados;
 import com.imls.maridoaluguel.Business.Visualizacao;
 import com.imls.maridoaluguel.Form.Usuario;
+import com.imls.maridoaluguel.Form.UsuarioMarido;
 import com.imls.maridoaluguel.R;
+import com.imls.maridoaluguel.Util.AdaptadorProfissionais;
+import com.imls.maridoaluguel.Util.AdaptadorServico;
 import com.imls.maridoaluguel.Util.GerenciaInstanciaLogin;
+
+import java.util.ArrayList;
 
 
 public class TelaInicial extends AppCompatActivity {
+
+    RecyclerView recyclerView;
+    AdaptadorProfissionais adpt;
 
     BancoDados bd = new BancoDados(this);
 
@@ -44,6 +55,9 @@ public class TelaInicial extends AppCompatActivity {
         final Button btnDeslogar = findViewById(R.id.btnDeslogar);
         final ImageButton btnMenu = findViewById(R.id.btnMenu);
         final Button btnChamaTelaVisualizarProfissionais = findViewById(R.id.btnChamaTelaVisualizaProfissionais);
+        final ImageButton btnBusca = findViewById(R.id.btnChamaPesquisa);
+
+        final EditText caixaPesquisa = findViewById(R.id.txtPesquisar);
 
         ConstraintLayout layout = findViewById(R.id.layoutInicial);
         RelativeLayout relativeLayout = findViewById(R.id.rlLayout);
@@ -242,6 +256,19 @@ public class TelaInicial extends AppCompatActivity {
                 btnDeslogar.setVisibility(View.GONE);
                 btnChamaTelaVisualizaServico.setVisibility(View.GONE);
                 btnChamaTelaVisualizarProfissionais.setVisibility(View.GONE);
+            }
+        });
+
+        btnBusca.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent telaVisuProfissa = new Intent(view.getContext(), TelaVisualizaProfissionais.class);
+                String caixaP = caixaPesquisa.getText().toString();
+                telaVisuProfissa.putExtra("caixaP", caixaP);
+
+                caixaPesquisa.setText("");
+                view.getContext().startActivity(telaVisuProfissa);
             }
         });
     }

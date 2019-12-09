@@ -1,6 +1,7 @@
 package com.imls.maridoaluguel.Util;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.imls.maridoaluguel.Activity.TelaVisualizaProfissional;
+import com.imls.maridoaluguel.Activity.TelaVisualizaServico;
 import com.imls.maridoaluguel.Banco.BancoDados;
 import com.imls.maridoaluguel.Form.UsuarioMarido;
 import com.imls.maridoaluguel.R;
@@ -39,18 +42,20 @@ public class AdaptadorProfissionais extends RecyclerView.Adapter<AdaptadorProfis
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
+        String nomeMar = "";
+
         try {
-            holder.nome.setText(bd.buscaNomePorIdDomestico(dados.get(position).getIdMarido()));
+            nomeMar = bd.buscaNomePorIdMarido(dados.get(position).getIdMarido());
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        holder.nome.setText(nomeMar);
         holder.desc.setText(dados.get(position).getDescHabilidade());
         holder.nota.setText(converte(dados.get(position).getAvaliacao()));
     }
 
     @Override
     public int getItemCount() {
-        System.out.println(dados.size());
         return dados.size();
     }
 
@@ -60,6 +65,18 @@ public class AdaptadorProfissionais extends RecyclerView.Adapter<AdaptadorProfis
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent telaVisuProfi = new Intent(v.getContext(), TelaVisualizaProfissional.class);
+                    Integer id = dados.get(getAdapterPosition()).getIdMarido();
+                    telaVisuProfi.putExtra("idMarido", id.toString());
+
+                    v.getContext().startActivity(telaVisuProfi);
+                }
+            });
 
             nome = itemView.findViewById(R.id.viewNomeTVS);
             desc = itemView.findViewById(R.id.viewDescTVS);

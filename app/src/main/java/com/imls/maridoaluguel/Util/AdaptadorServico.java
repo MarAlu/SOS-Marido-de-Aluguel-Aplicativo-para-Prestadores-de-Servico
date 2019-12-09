@@ -1,6 +1,7 @@
 package com.imls.maridoaluguel.Util;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.imls.maridoaluguel.Activity.TelaVisualizaServico;
 import com.imls.maridoaluguel.Banco.BancoDados;
 import com.imls.maridoaluguel.Form.Servico;
 import com.imls.maridoaluguel.Form.UsuarioDomestico;
@@ -57,7 +59,6 @@ public class AdaptadorServico extends RecyclerView.Adapter<AdaptadorServico.View
 
     @Override
     public int getItemCount() {
-        System.out.println(dados.size());
         return dados.size();
     }
 
@@ -68,6 +69,17 @@ public class AdaptadorServico extends RecyclerView.Adapter<AdaptadorServico.View
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent telaVisuServico = new Intent(v.getContext(), TelaVisualizaServico.class);
+                    Integer id = dados.get(getAdapterPosition()).getIdServico();
+                    telaVisuServico.putExtra("idServico", id.toString());
+
+                    v.getContext().startActivity(telaVisuServico);
+                }
+            });
              nome = itemView.findViewById(R.id.viewNomeTVS);
              area = itemView.findViewById(R.id.viewAreaTVS);
              desc = itemView.findViewById(R.id.viewDescTVS);

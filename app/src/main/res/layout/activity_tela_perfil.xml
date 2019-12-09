@@ -20,7 +20,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/viewNomeTPU"
+                android:id="@+id/viewNomeTPM"
                 style="@style/Widget.AppCompat.AutoCompleteTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
                 style="@style/Widget.AppCompat.AutoCompleteTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/viewNomeTPU"
+                android:layout_below="@+id/viewNomeTPM"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="60dp"
@@ -59,7 +59,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.502"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/viewNomeTPU" />
+                app:layout_constraintTop_toBottomOf="@+id/viewNomeTPM" />
 
             <TextView
                 android:id="@+id/viewSenhaTPU"
@@ -82,7 +82,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/viewEmailTPU" />
 
             <TextView
-                android:id="@+id/viewCidadeTPU"
+                android:id="@+id/viewCidadeTVM"
                 style="@style/Widget.AppCompat.AutoCompleteTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -109,7 +109,7 @@
                 style="@style/Widget.AppCompat.AutoCompleteTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/viewCidadeTPU"
+                android:layout_below="@+id/viewCidadeTVM"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="60dp"
@@ -147,7 +147,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/viewCidadeTPU"
+                app:layout_constraintTop_toBottomOf="@+id/viewCidadeTVM"
                 app:layout_constraintVertical_bias="0.014" />
 
             <EditText
@@ -170,7 +170,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/viewCidadeTPU"
+                app:layout_constraintTop_toBottomOf="@+id/viewCidadeTVM"
                 app:layout_constraintVertical_bias="0.014" />
 
             <EditText
@@ -193,7 +193,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/viewCidadeTPU"
+                app:layout_constraintTop_toBottomOf="@+id/viewCidadeTVM"
                 app:layout_constraintVertical_bias="0.014" />
 
             <TextView
@@ -247,7 +247,7 @@
                 android:textColor="#000000" />
 
             <TextView
-                android:id="@+id/viewInfoCadTPU"
+                android:id="@+id/viewInfoCadTVM"
                 android:layout_width="334dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/checkMaridoDeAluguelTPU"
@@ -257,16 +257,17 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="35dp"
                 android:foregroundTint="#000000"
+                android:gravity="center"
                 android:text="Selecione as áreas as quais possuí conhecimento"
                 android:textColor="#000000"
                 android:textColorHint="#000000"
                 android:textSize="14sp" />
 
             <CheckBox
-                android:id="@+id/checkEletricaTPU"
+                android:id="@+id/checkEletricaTVM"
                 android:layout_width="182dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/viewInfoCadTPU"
+                android:layout_below="@+id/viewInfoCadTVM"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="5dp"
@@ -277,10 +278,10 @@
                 android:textColor="#000000" />
 
             <CheckBox
-                android:id="@+id/checkEncanamentoTPU"
+                android:id="@+id/checkEncanamentoTVM"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/viewInfoCadTPU"
+                android:layout_below="@+id/viewInfoCadTVM"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="195dp"
@@ -291,10 +292,10 @@
                 android:textColor="#000000" />
 
             <CheckBox
-                android:id="@+id/checkAlvenariaTPU"
+                android:id="@+id/checkAlvenariaTPM"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/checkEletricaTPU"
+                android:layout_below="@+id/checkEletricaTVM"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="5dp"
@@ -305,10 +306,10 @@
                 android:textColor="#000000" />
 
             <CheckBox
-                android:id="@+id/checkPinturaTPU"
+                android:id="@+id/checkPinturaTVM"
                 android:layout_width="136dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/checkEncanamentoTPU"
+                android:layout_below="@+id/checkEncanamentoTVM"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="195dp"
@@ -319,10 +320,10 @@
                 android:textColor="#000000" />
 
             <CheckBox
-                android:id="@+id/checkMarcenariaTPU"
+                android:id="@+id/checkMarcenariaTVM"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/checkAlvenariaTPU"
+                android:layout_below="@+id/checkAlvenariaTPM"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="5dp"
@@ -333,10 +334,10 @@
                 android:textColor="#000000" />
 
             <CheckBox
-                android:id="@+id/checkOutrosTPU"
+                android:id="@+id/checkOutrosTVM"
                 android:layout_width="117dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/checkPinturaTPU"
+                android:layout_below="@+id/checkPinturaTVM"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="195dp"
@@ -347,10 +348,10 @@
                 android:textColor="#000000" />
 
             <TextView
-                android:id="@+id/viewDescAtividadesTPU"
+                android:id="@+id/viewDescAtividadesTVM"
                 android:layout_width="wrap_content"
                 android:layout_height="250dp"
-                android:layout_alignTop="@+id/checkOutrosTPU"
+                android:layout_alignTop="@+id/checkOutrosTVM"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="60dp"
@@ -394,10 +395,10 @@
                 app:layout_constraintVertical_bias="0.836" />
 
             <Button
-                android:id="@+id/btnEditar2TPU"
+                android:id="@+id/btnCriarServicoTVM"
                 android:layout_width="161dp"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/viewDescAtividadesTPU"
+                android:layout_below="@+id/viewDescAtividadesTVM"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="220dp"

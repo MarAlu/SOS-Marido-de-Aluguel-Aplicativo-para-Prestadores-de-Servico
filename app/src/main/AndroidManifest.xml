@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.TelaVisualizaProfissionais"></activity>
+        <activity android:name=".Activity.TelaCadastroServicoDirecionado"></activity>
+        <activity android:name=".Activity.TelaVisualizaProfissional" />
+        <activity android:name=".Activity.TelaVisualizaServico" />
+        <activity android:name=".Activity.TelaVisualizaProfissionais" />
         <activity android:name=".Activity.TelaVisualizaServicos" />
         <activity android:name=".Activity.TelaCadastroServico" />
         <activity android:name=".Activity.TelaEditPerfil" />

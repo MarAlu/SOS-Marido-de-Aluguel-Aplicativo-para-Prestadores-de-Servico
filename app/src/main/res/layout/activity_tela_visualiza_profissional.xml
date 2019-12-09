@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.TelaVisualizaProfissional"
+    android:foregroundGravity="center">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:foregroundGravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="-16dp">
+
+        <RelativeLayout
+            android:id="@+id/rlLayoutTVM"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/viewNomeTPM"
+                style="@style/Widget.AppCompat.AutoCompleteTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="60dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:foregroundGravity="center"
+                android:textColor="#000000"
+                android:textColorHint="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/viewCidadeTVM"
+                style="@style/Widget.AppCompat.AutoCompleteTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/viewNomeTPM"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="60dp"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:foregroundGravity="center"
+                android:textColor="#000000"
+                android:textColorHint="#000000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_bias="0.023" />
+
+            <TextView
+                android:id="@+id/viewInfoCadTVM"
+                android:layout_width="334dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/viewCidadeTVM"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="35dp"
+                android:foregroundTint="#000000"
+                android:gravity="center"
+                android:text="Áreas em que o profissional tem conhecimento"
+                android:textColor="#000000"
+                android:textColorHint="#000000"
+                android:textSize="14sp" />
+
+            <CheckBox
+                android:id="@+id/checkEletricaTVM"
+                android:layout_width="182dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/viewInfoCadTVM"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="225dp"
+                android:buttonTint="#000000"
+                android:text="Elétrica"
+                android:textColor="#000000" />
+
+            <CheckBox
+                android:id="@+id/checkAlvenariaTPM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/checkEletricaTVM"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="225dp"
+                android:buttonTint="#000000"
+                android:text="Alvenaria"
+                android:textColor="#000000" />
+
+            <CheckBox
+                android:id="@+id/checkEncanamentoTVM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/viewInfoCadTVM"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="195dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="5dp"
+                android:buttonTint="#000000"
+                android:text="Encanamentos"
+                android:textColor="#000000" />
+
+            <CheckBox
+                android:id="@+id/checkPinturaTVM"
+                android:layout_width="136dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/checkEncanamentoTVM"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="195dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:buttonTint="#000000"
+                android:text="Pintura"
+                android:textColor="#000000" />
+
+            <CheckBox
+                android:id="@+id/checkMarcenariaTVM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/checkAlvenariaTPM"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="225dp"
+                android:buttonTint="#000000"
+                android:text="Marcenaria"
+                android:textColor="#000000" />
+
+            <CheckBox
+                android:id="@+id/checkOutrosTVM"
+                android:layout_width="117dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/checkPinturaTVM"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="195dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:buttonTint="#000000"
+                android:text="Outros"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/viewDescAtividadesTVM"
+                android:layout_width="wrap_content"
+                android:layout_height="250dp"
+                android:layout_alignTop="@+id/checkOutrosTVM"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="60dp"
+                android:accessibilityLiveRegion="polite"
+                android:ems="10"
+                android:fadeScrollbars="false"
+                android:gravity="start|top"
+                android:scrollY="2dp"
+                android:scrollbarAlwaysDrawHorizontalTrack="false"
+                android:scrollbarAlwaysDrawVerticalTrack="false"
+                android:scrollbarDefaultDelayBeforeFade="400"
+                android:scrollbarSize="2dp"
+                android:scrollbarStyle="insideOverlay"
+                android:scrollbarTrackVertical="@color/colorAccent"
+                android:scrollbars="vertical"
+                android:selectAllOnFocus="false"
+                android:textColor="#000000"
+                android:textColorHint="#000000"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btnCriarServicoTVM"
+                android:layout_width="161dp"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/viewDescAtividadesTVM"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="220dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="15dp"
+                android:background="#5C5B5B"
+                android:text="Criar Serviço"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_bias="0.836" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

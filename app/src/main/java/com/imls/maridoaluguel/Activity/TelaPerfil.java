@@ -1,6 +1,5 @@
 package com.imls.maridoaluguel.Activity;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -46,7 +45,7 @@ public class TelaPerfil extends AppCompatActivity {
 
         //Botão Cadastrar
         final Button btnEditar = findViewById(R.id.btnEditarTPU);
-        final Button btnEditar2 = findViewById(R.id.btnEditar2TPU);
+        final Button btnEditar2 = findViewById(R.id.btnCriarServicoTVM);
         final Button btnView = findViewById(R.id.btnViewTPU);
 
         //Check Tipos User
@@ -54,18 +53,18 @@ public class TelaPerfil extends AppCompatActivity {
         final CheckBox checkMarido = findViewById(R.id.checkMaridoDeAluguelTPU);
 
         //Check Áreas
-        final CheckBox checkEletrica = findViewById(R.id.checkEletricaTPU);
-        final CheckBox checkEncanamento = findViewById(R.id.checkEncanamentoTPU);
-        final CheckBox checkPintura = findViewById(R.id.checkPinturaTPU);
-        final CheckBox checkAlvenaria = findViewById(R.id.checkAlvenariaTPU);
-        final CheckBox checkMarcenaria = findViewById(R.id.checkMarcenariaTPU);
-        final CheckBox checkOutros = findViewById(R.id.checkOutrosTPU);
+        final CheckBox checkEletrica = findViewById(R.id.checkEletricaTVM);
+        final CheckBox checkEncanamento = findViewById(R.id.checkEncanamentoTVM);
+        final CheckBox checkPintura = findViewById(R.id.checkPinturaTVM);
+        final CheckBox checkAlvenaria = findViewById(R.id.checkAlvenariaTPM);
+        final CheckBox checkMarcenaria = findViewById(R.id.checkMarcenariaTVM);
+        final CheckBox checkOutros = findViewById(R.id.checkOutrosTVM);
 
         //Campos view
-        final TextView msgInfo = findViewById(R.id.viewInfoCadTPU);
-        final TextView nome = findViewById(R.id.viewNomeTPU);
+        final TextView msgInfo = findViewById(R.id.viewInfoCadTVM);
+        final TextView nome = findViewById(R.id.viewNomeTPM);
         final TextView email = findViewById(R.id.viewEmailTPU);
-        final TextView cidade = findViewById(R.id.viewCidadeTPU);
+        final TextView cidade = findViewById(R.id.viewCidadeTVM);
         final TextView estado = findViewById(R.id.viewEstadoTPU);
         final TextView dataNasc = findViewById(R.id.viewDataNascTPU);
         final TextView foneContato = findViewById(R.id.viewFoneTPU);
@@ -74,7 +73,7 @@ public class TelaPerfil extends AppCompatActivity {
         final EditText dat = findViewById(R.id.editDataTPU);
         final EditText fon = findViewById(R.id.editFoneTPU);
 
-        final TextView descricaoAtivi = findViewById(R.id.viewDescAtividadesTPU);
+        final TextView descricaoAtivi = findViewById(R.id.viewDescAtividadesTVM);
 
         //Torna campo descrição rolável
         descricaoAtivi.setVerticalScrollBarEnabled(true);

@@ -12,7 +12,6 @@ import com.imls.maridoaluguel.Form.Servico;
 import com.imls.maridoaluguel.Form.UsuarioMarido;
 import com.imls.maridoaluguel.R;
 import com.imls.maridoaluguel.Util.AdaptadorProfissionais;
-import com.imls.maridoaluguel.Util.AdaptadorServico;
 
 import java.text.ParseException;
 import java.util.ArrayList;

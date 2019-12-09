@@ -398,6 +398,35 @@ public class BancoDados extends SQLiteOpenHelper {
 
     }
 
+    //BUSCAR USUARIO POR ID
+    public Usuario buscarUsuarioPorId(int idUser) {
+
+        Usuario user = new Usuario();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(tabela_usuario, new String[]{col_codigo, col_nome, col_email, col_cidade, col_estado,
+                        col_fone, col_dataNasc, col_senha, col_tipoUser, col_ativo},
+                col_codigo + " = ?", new String[]{String.valueOf(idUser)},
+                null, null, null, null);
+
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            user.setId(Integer.parseInt(cursor.getString(0)));
+            user.setNome(cursor.getString(1));
+            user.setEmail(cursor.getString(2));
+            user.setCidade(cursor.getString(3));
+            user.setEstado(cursor.getString(4));
+            user.setFone(cursor.getString(5));
+            user.setDataNasc(cursor.getString(6));
+            user.setSenha(cursor.getString(7));
+            user.setTipoUser(TipoUsuario.valueOf(cursor.getString(8)));
+            user.setAtivo(StatusUsuario.valueOf(cursor.getString(9)));
+
+            db.close();
+        }
+        return user;
+    }
+
 
 
 
@@ -768,6 +797,30 @@ public class BancoDados extends SQLiteOpenHelper {
         }
         return userMar;
     }
+
+    //BUSCAR MARIDO POR CODIGO MARIDO
+    public UsuarioMarido buscarMaridoPorCdMarido(int idMar) {
+
+        UsuarioMarido userMar = new UsuarioMarido();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(tabela_marido, new String[]{col_codigo_mar, col_codigo_in_mar, col_habilidade, col_servicos_rel, col_avaliacao_mar},
+                col_codigo_mar + " = ?", new String[]{String.valueOf(idMar)},
+                null, null, null, null);
+
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            userMar.setIdMarido(Integer.parseInt(cursor.getString(0)));
+            userMar.setIdUsuario(Integer.parseInt(cursor.getString(1)));
+            userMar.setDescHabilidade(cursor.getString(2));
+            userMar.setServicosRealizados(Integer.parseInt(cursor.getString(3)));
+            userMar.setAvaliacao(Float.parseFloat(cursor.getString(4)));
+
+            db.close();
+        }
+        return userMar;
+    }
+
 
     //PESQUISA ID MARIDO POR CD USUARIO
     public int pesquisaIdMaridoPorCodigo(int idUser) {

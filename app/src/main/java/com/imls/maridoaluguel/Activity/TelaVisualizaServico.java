@@ -1,9 +1,12 @@
 package com.imls.maridoaluguel.Activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.method.ScrollingMovementMethod;
 import android.view.MotionEvent;
 import android.view.View;
@@ -11,6 +14,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.imls.maridoaluguel.Banco.BancoDados;
 import com.imls.maridoaluguel.Business.Visualizacao;
@@ -70,6 +74,10 @@ public class TelaVisualizaServico extends AppCompatActivity {
         }
 
         if(idMaridoW != 0) {
+            userCompletoMar.setUserMarido(bd.buscarMaridoPorCdMarido(serv.getIdMarido()));
+            userCompletoMar.setUser(bd.buscarUsuarioPorId(userCompletoMar.getUserMarido().getIdUsuario()));
+        }
+        if(serv.getIdMarido() != 0) {
             userCompletoMar.setUserMarido(bd.buscarMaridoPorCdMarido(serv.getIdMarido()));
             userCompletoMar.setUser(bd.buscarUsuarioPorId(userCompletoMar.getUserMarido().getIdUsuario()));
         }
@@ -237,7 +245,7 @@ public class TelaVisualizaServico extends AppCompatActivity {
 
                 btnAceitar.setVisibility(View.GONE);
                 btnRecusar.setVisibility(View.VISIBLE);
-                btnConcluir.setVisibility(View.GONE);
+                btnConcluir.setVisibility(View.VISIBLE);
                 btnCancelar.setVisibility(View.GONE);
             }
 
@@ -260,15 +268,13 @@ public class TelaVisualizaServico extends AppCompatActivity {
             }
         }
 
-
-
         nome.setText(userCompletoDom.getUser().getNome());
         cidade.setText(userCompletoDom.getUser().getCidade());
         foneContato.setText(fon.getText().toString());
 
         descricaoAtivi.setText(serv.getDescServico());
 
-        if(idMaridoW != 0) {
+        if(serv.getIdMarido() != 0) {
             nomeMarido.setText(userCompletoMar.getUser().getNome());
 
         }
@@ -283,10 +289,11 @@ public class TelaVisualizaServico extends AppCompatActivity {
                 servi.setAreaServico(finalServ1.getAreaServico());
                 servi.setIdDomestico(finalServ1.getIdDomestico());
                 if(finalServ1.getIdMarido() == 0) {
-                    servi.setIdMarido(0);
+                    servi.setIdMarido(idMaridoW);
                 }
                 else {
-                    servi.setIdMarido(idMaridoW);
+
+                    servi.setIdMarido(finalServ1.getIdMarido());
                 }
                 servi.setDescServico(finalServ1.getDescServico());
                 servi.setTipoServico(finalServ1.getTipoServico());
@@ -337,13 +344,6 @@ public class TelaVisualizaServico extends AppCompatActivity {
                 servi.setIdServico(finalServ1.getIdServico());
                 servi.setAreaServico(finalServ1.getAreaServico());
                 servi.setIdDomestico(finalServ1.getIdDomestico());
-                if(finalServ1.getIdMarido() == 0) {
-                    servi.setIdMarido(0);
-                }
-                else {
-                    servi.setIdMarido(userCompletoMar.getUserMarido().getIdMarido());
-                }
-
                 servi.setDescServico(finalServ1.getDescServico());
                 servi.setTipoServico(finalServ1.getTipoServico());
                 servi.setNotaParaDomestico(finalServ1.getNotaParaDomestico());
@@ -363,5 +363,28 @@ public class TelaVisualizaServico extends AppCompatActivity {
             }
         });
 
+        btnConcluir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Servico servi = new Servico();
+
+                servi.setIdServico(finalServ1.getIdServico());
+                servi.setAreaServico(finalServ1.getAreaServico());
+                servi.setIdDomestico(finalServ1.getIdDomestico());
+                servi.setIdMarido(finalServ1.getIdMarido());
+                servi.setDescServico(finalServ1.getDescServico());
+                servi.setTipoServico(finalServ1.getTipoServico());
+                servi.setFoneDomestico(finalServ1.getFoneDomestico());
+                servi.setNotaParaMarido(finalServ1.getNotaParaMarido());
+                servi.setNotaParaDomestico(finalServ1.getNotaParaDomestico());
+
+
+                bd.cancelaServico(servi, "CONCLUIDO");
+                
+                Intent telaInicial = new Intent(TelaVisualizaServico.this, TelaInicial.class);
+                startActivity(telaInicial);
+
+            }
+        });
     }
 }

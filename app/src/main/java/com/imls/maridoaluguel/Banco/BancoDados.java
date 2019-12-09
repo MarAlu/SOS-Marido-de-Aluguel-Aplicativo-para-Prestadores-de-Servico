@@ -1035,6 +1035,7 @@ public class BancoDados extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         try {
             values.put(col_status_serv, status);
+            System.out.println(servico.getIdMarido());
             values.put(col_codigo_mar_in_serv, servico.getIdMarido());
 
             db.update(tabela_servico, values, col_codigo_servico + " = ?", new String[]{String.valueOf(servico.getIdServico())});

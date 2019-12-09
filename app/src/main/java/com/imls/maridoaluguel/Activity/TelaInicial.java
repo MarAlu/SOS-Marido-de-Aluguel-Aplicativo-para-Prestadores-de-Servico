@@ -207,8 +207,11 @@ public class TelaInicial extends AppCompatActivity {
                 btnChamaTelaVisualizaServico.setVisibility(View.GONE);
                 btnChamaTelaVisualizarProfissionais.setVisibility(View.GONE);
 
-                Intent telaVisualizaProfissionais = new Intent(TelaInicial.this, TelaVisualizaProfissionais.class);
-                startActivity(telaVisualizaProfissionais);
+                Intent telaVisuProfissa = new Intent(v.getContext(), TelaVisualizaProfissionais.class);
+                telaVisuProfissa.putExtra("caixaP", "");
+
+                v.getContext().startActivity(telaVisuProfissa);
+
             }
         });
 
